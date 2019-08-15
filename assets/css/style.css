@@ -1,1 +1,11 @@
+body {
+  height: 100vh;
+}
 
+header {
+  height: 12.5%;
+}
+
+main {
+  height: 87.5%;
+}
