@@ -9,3 +9,122 @@ header {
 main {
   height: 87.5%;
 }
+
+.card {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/mysterybox.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+div.row {
+  height: 30%;
+  padding: 0 5%;
+}
+
+.hidden {
+  display: none;
+}
+
+.star {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/star.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.mushroom {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/mushroom.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.life {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/life.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.koopa {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/koopa.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.goomba {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/goomba.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.fire {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/fire.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.coin {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/coin.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bones {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/bones.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bowser {
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../images/bowser.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
