@@ -6,9 +6,19 @@
   <body class="container-fluid">
     <header class="row"></header>
     <main class="row">
-      <aside class="col-2"></aside>
-      <div class="container col-10"></div>
+      <aside class="col-2-5">
+        <div id="player" class="mario"></div>
+        <div class="panel"></div>
+      </aside>
+      <div class="container col-9-5"></div>
     </main>
+
+    <audio id='death' src="assets/sounds/smb_mariodie.wav" type="audio/wav"></audio>
+    <audio id='grow' src="assets/sounds/grow.wav" type="audio/wav"></audio>
+    <audio id='shrink' src="assets/sounds/shrink.wav" type="audio/wav"></audio>
+    <audio id='oneup' src="assets/sounds/smb3_1-up.wav" type="audio/wav"></audio>
+    <audio id='score' src="assets/sounds/smb3_coin.wav" type="audio/wav"></audio>
+    <audio id='victory' src="assets/sounds/8d82b5_Super_Mario_Bros_World_Clear_Sound_Effect.mp3" type="audio/mp3"></audio>
 
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
