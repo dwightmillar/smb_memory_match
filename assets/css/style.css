@@ -1,40 +1,62 @@
 @keyframes bounce {
-  0% {bottom: 0px}
-  12% {bottom: 1px}
-  25% {bottom: 3px}
-  37% {bottom: 7px}
-  50% {bottom: 10px}
-  67% {bottom: 7px}
-  75% {bottom: 3px}
-  87% {bottom: 1px}
+  8.3% {bottom: 1px}
+  16.7% {bottom: 3px}
+  25% {bottom: 6px}
+  33.3% {bottom: 10px}
+  41.7% {bottom: 15px}
+  50% {bottom: 21px}
+  58.3% {bottom: 15px}
+  66.6% {bottom: 10px}
+  75% {bottom: 6px}
+  83.3% {bottom: 3px}
+  91.7% {bottom: 1px}
   100% {bottom: 0px}
+
 }
 
 body {
   height: 100vh;
+  background-image: url("../images/background.jpg");
+  background-position-y: 100%;
+  background-size: cover;
   overflow: hidden;
 }
 
-header {
-  height: 18.7%;
-  background-image: url("../images/brick.png")
-}
 
 main {
   height: 81%;
 }
 
-/* aside.container  {
-  width: 20.8%;
-  height: 100%;
-  display: inline-block;
-
-} */
+aside {
+  top: 7vw;
+}
 
 .bounce {
   animation-name: bounce;
   animation-duration: 0.25s;
-  animation-iteration-count: 1;
+  animation-iteration-count: .62;
+}
+
+.title {
+  height: 5vw;
+  width: 100%;
+  top: 1vw;
+  left: 20vw;
+  position: absolute;
+  background-image: url("../images/supermario.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.subtitle {
+  height: 3vw;
+  width: 100%;
+  top: 6vw;
+  left: 30vw;
+  position: absolute;
+  background-image: url("../images/memorymatch.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .container {
@@ -42,6 +64,10 @@ main {
   width: 89.2%;
   margin:0;
   display: inline-block;
+}
+
+.container-fluid {
+  padding: 0;
 }
 
 /* .col-2-5 {
@@ -52,14 +78,24 @@ main {
     height: 100%;
 } */
 
+.block {
+  position: relative;
+  display: inline-block;
+  background-image: url('../images/brick.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 10vw;
+  width: 10vw;
+}
+
 .col-2-5 {
     position: relative;
-    width: 240.58px;
+    width: 20vw;
     height: 100%;
 }
 
 .col-9-5 {
-  flex: 0 0 100%;
+  flex: 0 0 79.166666666667%;
   max-width: 79.166666666667%;
   position: relative;
   width: 100%;
@@ -97,12 +133,11 @@ main {
 }
 
 .panel {
-  background-image: url("../images/brick.png");
-  height: 50%;
+  height: 20vw;
   width: 100%;
 }
 
-.card {
+.back {
   height: 100%;
   padding: 0;
   margin: 0;
@@ -114,7 +149,7 @@ main {
 }
 
 div.row {
-  height: 30%;
+  height: 27.2%;
   padding: 1.6% 5%;
 }
 
