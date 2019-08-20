@@ -125,7 +125,7 @@ function grow(fire) {
     }
     health = 3;
   } else if (health === 1) {
-    $('#player')[0].className = 'mario mario-to-super';
+    $('#player')[0].className = 'mario-to-super mario';
     health = 2;
   }
 
@@ -177,11 +177,11 @@ function shrink(damage) {
         alert('Game over!');
       }
     } else if (health === 1) {
-      $('#player')[0].className = 'minimario super-to-mario';
+      $('#player')[0].className = 'super-to-mario minimario';
       $('#shrink')[0].play()
         .catch((error) => console.log(error.message));
     } else if (health === 2) {
-      $('#player')[0].className = 'mario fire-to-super';
+      $('#player')[0].className = 'fire-to-super mario';
       $('#shrink')[0].play()
         .catch((error) => console.log(error.message));
     }

@@ -24,13 +24,13 @@
   100% {background-image: url("../images/mario.png")}
 }
 
-@keyframes super-to-mario-flicker {
+@keyframes super-to-fire-flicker {
   0% {background-image: url("../images/mario.png")}
-  20% {background-image: url("../images/minimario.png")}
+  20% {background-image: url("../images/firemario.png")}
   40% {background-image: url("../images/mario.png")}
-  60% {background-image: url("../images/minimario.png")}
+  60% {background-image: url("../images/firemario.png")}
   80% {background-image: url("../images/mario.png")}
-  100% {background-image: url("../images/minimario.png")}
+  100% {background-image: url("../images/firemario.png")}
 }
 
 @keyframes mario-to-fire-flicker {
@@ -41,6 +41,25 @@
   80% {background-image: url("../images/minimario.png")}
   100% {background-image: url("../images/firemario.png")}
 }
+
+@keyframes super-to-mario-flicker {
+  0% {background-image: url("../images/mario.png")}
+  20% {background-image: url("../images/minimario.png")}
+  40% {background-image: url("../images/mario.png")}
+  60% {background-image: url("../images/minimario.png")}
+  80% {background-image: url("../images/mario.png")}
+  100% {background-image: url("../images/minimario.png")}
+}
+
+@keyframes mario-to-super-flicker {
+  0% {background-image: url("../images/minimario.png")}
+  30% {background-image: url("../images/mario.png")}
+  40% {background-image: url("../images/minimario.png")}
+  60% {background-image: url("../images/mario.png")}
+  80% {background-image: url("../images/minimario.png")}
+  200% {background-image: url("../images/mario.png")}
+}
+
 
 
 
@@ -58,10 +77,6 @@ main {
   height: 81%;
 }
 
-/* aside {
-  top: 14vh;
-} */
-
 .bounce {
   animation-name: bounce;
   animation-duration: 0.25s;
@@ -74,8 +89,7 @@ main {
 }
 
 .mario-to-super {
-  animation-name: super-to-mario-flicker;
-  animation-direction: reverse;
+  animation-name: mario-to-super-flicker;
   animation-duration: 1.5s;
 }
 
@@ -85,8 +99,7 @@ main {
 }
 
 .super-to-fire {
-  animation-name: fire-to-super-flicker;
-  animation-direction: reverse;
+  animation-name: super-to-fire-flicker;
   animation-duration: 1.5s;
 }
 
