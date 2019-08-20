@@ -1,9 +1,8 @@
 var cardContainer = $("div.container");
 var health = 2;
 var lives = 1;
-var canClick = true;
 var powerups = [];
-var victory = true;
+var victory = false;
 
 
 var cardDeck =
@@ -19,6 +18,8 @@ var cardDeck =
 
 var cardOne = null;
 var cardTwo = null;
+var cardOneType = null;
+var cardTwoType = null;
 
 
 class Card {
@@ -26,6 +27,7 @@ class Card {
     this.div = $("<div>", { id: type, class: "col-2", click: this.flipCard });
     this.cardBack = $("<div>", { class: "card back"});
     this.cardFace = $("<div>", { class: type + " hidden"});
+    this.canClick = true;
 
     this.div.append(this.cardBack);
     this.div.append(this.cardFace);
@@ -33,33 +35,41 @@ class Card {
     return (
       this.div
     )
+
+    this.flipCard = this.flipCard.bind(this);
   }
 
   flipCard() {
-    if (canClick === false) {
+    if (this.canClick === false) {
       return
     }
+    this.canClick = false;
     this.children[1].classList.toggle("hidden");
     this.children[0].classList.toggle("hidden");
+    this.classList.toggle("bounce");
     if (cardOne === null) {
-      cardOne = this.children;
-      $(cardOne).off('click');
+      cardOne = this;
+      cardOneType = cardOne.children[1].className;
     } else if (cardOne !== null && cardTwo === null) {
-      cardTwo = this.children;
-      if (cardTwo[1].className !== cardOne[1].className) {
-        canClick = false;
+      cardTwo = this;
+      cardTwoType = cardTwo.children[1].className;
+      if ( cardTwoType !==  cardOneType) {
         setTimeout(() => {
-          cardOne[1].classList.toggle("hidden");
-          cardOne[0].classList.toggle("hidden");
-          cardTwo[1].classList.toggle("hidden");
-          cardTwo[0].classList.toggle("hidden");
+          cardOne.classList.toggle("bounce");
+          cardOne.children[1].classList.toggle("hidden");
+          cardOne.children[0].classList.toggle("hidden");
+          cardTwo.classList.toggle("bounce");
+          cardTwo.children[1].classList.toggle("hidden");
+          cardTwo.children[0].classList.toggle("hidden");
+          cardOne.canClick = true;
+          cardTwo.canClick = true;
           cardOne = null;
           cardTwo = null;
-          canClick=true}, 500);
+        }, 500);
       } else {
-        $("." + cardOne[1].className).parent().off('click');
+        $("." +  cardOneType).parent().off('click');
 
-        switch (cardOne[1].className) {
+        switch ( cardOneType) {
           case 'mushroom': grow();
             break;
 
@@ -84,8 +94,9 @@ class Card {
           case 'bones': shrink(1);
             break;
 
-
-          case 'bowser': shrink(3);
+          case 'bowser':
+            victory = true;
+            shrink(3);
             break;
 
           case 'coin': score();
@@ -131,6 +142,13 @@ function score() {
 
 function shrink(damage) {
 
+  if (victory === true && (lives === 2 || powerups.length > 0)) {
+    $('#victory')[0].play()
+      .then((success) => console.log(success))
+      .catch((error) => console.log(error.message));
+    alert('You win!');
+  }
+
   if (powerups.length === 0){
     health -= damage;
     if (health <= 0) {
@@ -140,11 +158,6 @@ function shrink(damage) {
           .then((success) => console.log(success))
           .catch((error) => console.log(error.message));
         alert('Game over!');
-      } else if (victory === true) {
-        $('#victory')[0].play()
-          .then((success) => console.log(success))
-          .catch((error) => console.log(error.message));
-        alert('You win!');
       }
     } else if (health === 1) {
       $('#player')[0].className = 'minimario';

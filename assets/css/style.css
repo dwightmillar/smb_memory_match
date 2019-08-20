@@ -1,10 +1,22 @@
+@keyframes bounce {
+  0% {bottom: 0px}
+  12% {bottom: 1px}
+  25% {bottom: 3px}
+  37% {bottom: 7px}
+  50% {bottom: 10px}
+  67% {bottom: 7px}
+  75% {bottom: 3px}
+  87% {bottom: 1px}
+  100% {bottom: 0px}
+}
+
 body {
   height: 100vh;
   overflow: hidden;
 }
 
 header {
-  height: 19%;
+  height: 18.7%;
   background-image: url("../images/brick.png")
 }
 
@@ -16,7 +28,14 @@ main {
   width: 20.8%;
   height: 100%;
   display: inline-block;
+
 } */
+
+.bounce {
+  animation-name: bounce;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+}
 
 .container {
   padding: 0;
