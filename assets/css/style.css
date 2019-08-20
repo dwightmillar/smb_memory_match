@@ -1,22 +1,53 @@
 @keyframes bounce {
-  8.3% {bottom: 1px}
-  16.7% {bottom: 3px}
-  25% {bottom: 6px}
-  33.3% {bottom: 10px}
-  41.7% {bottom: 15px}
-  50% {bottom: 21px}
-  58.3% {bottom: 15px}
-  66.6% {bottom: 10px}
-  75% {bottom: 6px}
-  83.3% {bottom: 3px}
-  91.7% {bottom: 1px}
-  100% {bottom: 0px}
+  0% {bottom: 1px}
+  8.3% {bottom: 3px}
+  16.7% {bottom: 6px}
+  25% {bottom: 10px}
+  33.3% {bottom: 15px}
+  41.7% {bottom: 21px}
+  50% {bottom: 25px}
+  58.3% {bottom: 21px}
+  66.6% {bottom: 15px}
+  75% {bottom: 10px}
+  83.3% {bottom: 6px}
+  91.7% {bottom: 3px}
+  100% {bottom: 1px}
 
 }
 
+@keyframes fire-to-super-flicker {
+  0% {background-image: url("../images/firemario.png")}
+  20% {background-image: url("../images/mario.png")}
+  40% {background-image: url("../images/firemario.png")}
+  60% {background-image: url("../images/mario.png")}
+  80% {background-image: url("../images/firemario.png")}
+  100% {background-image: url("../images/mario.png")}
+}
+
+@keyframes super-to-mario-flicker {
+  0% {background-image: url("../images/mario.png")}
+  20% {background-image: url("../images/minimario.png")}
+  40% {background-image: url("../images/mario.png")}
+  60% {background-image: url("../images/minimario.png")}
+  80% {background-image: url("../images/mario.png")}
+  100% {background-image: url("../images/minimario.png")}
+}
+
+@keyframes mario-to-fire-flicker {
+  0% {background-image: url("../images/minimario.png")}
+  20% {background-image: url("../images/firemario.png")}
+  40% {background-image: url("../images/minimario.png")}
+  60% {background-image: url("../images/firemario.png")}
+  80% {background-image: url("../images/minimario.png")}
+  100% {background-image: url("../images/firemario.png")}
+}
+
+
+
+
 body {
   height: 100vh;
-  background-image: url("../images/background.jpg");
+  background-image: url("../images/background.png");
   background-position-y: 100%;
   background-size: cover;
   overflow: hidden;
@@ -27,14 +58,41 @@ main {
   height: 81%;
 }
 
-aside {
-  top: 7vw;
-}
+/* aside {
+  top: 14vh;
+} */
 
 .bounce {
   animation-name: bounce;
   animation-duration: 0.25s;
-  animation-iteration-count: .62;
+}
+
+.super-to-mario {
+  animation-name: super-to-mario-flicker;
+  animation-duration: 1.5s;
+
+}
+
+.mario-to-super {
+  animation-name: super-to-mario-flicker;
+  animation-direction: reverse;
+  animation-duration: 1.5s;
+}
+
+.mario-to-fire {
+  animation-name: mario-to-fire-flicker;
+  animation-duration: 1.5s;
+}
+
+.super-to-fire {
+  animation-name: fire-to-super-flicker;
+  animation-direction: reverse;
+  animation-duration: 1.5s;
+}
+
+.fire-to-super {
+  animation-name: fire-to-super-flicker;
+  animation-duration: 1.5s;
 }
 
 .title {
@@ -107,9 +165,11 @@ aside {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: 100%;
-  background-position-x: 50%;
-  height: 50%;
-  width: 100%;
+  height: 90%;
+  width: 10vw;
+  position: fixed;
+  bottom: 10vw;
+  left: 5vw;
 }
 
 .minimario {
@@ -117,9 +177,11 @@ aside {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: 100%;
-  background-position-x: 50%;
-  height: 50%;
-  width: 100%;
+  height: 90%;
+  width: 10vw;
+  position: fixed;
+  bottom: 10vw;
+  left: 5vw;
 }
 
 .firemario {
@@ -127,13 +189,18 @@ aside {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: 100%;
-  background-position-x: 50%;
-  height: 50%;
-  width: 100%;
+  height: 90%;
+  width: 10vw;
+  position: fixed;
+  bottom: 10vw;
+  left: 5vw;
 }
 
-.panel {
-  height: 20vw;
+.stand {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 10vw;
   width: 100%;
 }
 

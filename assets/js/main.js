@@ -45,7 +45,6 @@ class Card {
       return
     }
     $('#click')[0].play()
-      .then((success) => console.log(success))
       .catch((error) => console.log(error.message));
     this.canClick = false;
     this.children[1].classList.toggle("hidden");
@@ -117,17 +116,20 @@ window.onload = setGame();
 
 
 function grow(fire) {
-  if (health === 1) {
-    $('#player')[0].className = 'mario';
-    health = 2;
-  }
+
   if (fire === 'fire') {
-    $('#player')[0].className = 'firemario';
+    if (health === 1) {
+      $('#player')[0].className = 'mario-to-fire firemario';
+    } else if (health === 2) {
+      $('#player')[0].className = 'super-to-fire firemario';
+    }
     health = 3;
+  } else if (health === 1) {
+    $('#player')[0].className = 'mario mario-to-super';
+    health = 2;
   }
 
   $('#grow')[0].play()
-    .then((success) => console.log(success))
     .catch((error) => console.log(error.message));
 
   console.log('Health: ', health);
@@ -137,7 +139,6 @@ function grow(fire) {
 
 function sound(type) {
   $('#'+type)[0].play()
-    .then((success) => console.log(success))
     .catch((error) => console.log(error.message));
 
   if (type === 'invincible') {
@@ -146,7 +147,6 @@ function sound(type) {
     setTimeout(() => {
       powerups.pop();
       $('#theme')[0].play()
-        .then((success) => console.log(success))
         .catch((error) => console.log(error.message));
       $('#invincible')[0].pause()
     }, 5000);
@@ -162,7 +162,6 @@ function shrink(damage) {
     $('#theme')[0].pause();
     $('#invincible')[0].pause();
     $('#victory')[0].play()
-      .then((success) => console.log(success))
       .catch((error) => console.log(error.message));
     alert('You win!');
   }
@@ -174,19 +173,16 @@ function shrink(damage) {
       if (lives === 0) {
         $('#theme')[0].pause();
         $('#death')[0].play()
-          .then((success) => console.log(success))
           .catch((error) => console.log(error.message));
         alert('Game over!');
       }
     } else if (health === 1) {
-      $('#player')[0].className = 'minimario';
+      $('#player')[0].className = 'minimario super-to-mario';
       $('#shrink')[0].play()
-        .then((success) => console.log(success))
         .catch((error) => console.log(error.message));
     } else if (health === 2) {
-      $('#player')[0].className = 'mario';
+      $('#player')[0].className = 'mario fire-to-super';
       $('#shrink')[0].play()
-        .then((success) => console.log(success))
         .catch((error) => console.log(error.message));
     }
   }
@@ -200,7 +196,6 @@ function shrink(damage) {
 
 function setGame() {
   $('#theme')[0].play()
-    .then((success) => console.log(success))
     .catch((error) => console.log(error.message));
   for (var rowIndex = 0; rowIndex < 3; rowIndex++) {
     let cardRow = $("<div>", { class: "row" });

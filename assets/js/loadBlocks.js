@@ -3,5 +3,5 @@ for (let blockIndex = 0; blockIndex < 10; blockIndex++){
 }
 
 for (let blockIndex = 0; blockIndex < 2; blockIndex++) {
-  $('aside').append($('<div>', { class: 'block' }));
+  $('.stand').append($('<div>', { class: 'block' }));
 }
