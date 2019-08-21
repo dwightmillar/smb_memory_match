@@ -112,7 +112,6 @@ class Card {
   }
 }
 
-window.onload = setGame();
 
 
 function grow(fire) {
@@ -159,11 +158,11 @@ function sound(type) {
 function shrink(damage) {
 
   if (victory === true && (lives === 2 || powerups.length > 0)) {
+    alert('You win!');
     $('#theme')[0].pause();
     $('#invincible')[0].pause();
     $('#victory')[0].play()
       .catch((error) => console.log(error.message));
-    alert('You win!');
   }
 
   if (powerups.length === 0){
@@ -175,6 +174,14 @@ function shrink(damage) {
         $('#death')[0].play()
           .catch((error) => console.log(error.message));
         alert('Game over!');
+      } else {
+        $('#theme')[0].pause();
+        $('#death')[0].play()
+          .catch((error) => console.log(error.message));
+        $('#theme')[0].play()
+          .catch((error) => console.log(error.message));
+        health = 2;
+        $('#player')[0].className = 'mario-to-super mario';
       }
     } else if (health === 1) {
       $('#player')[0].className = 'super-to-mario minimario';
