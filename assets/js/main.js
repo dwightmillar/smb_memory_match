@@ -84,21 +84,19 @@ class Card {
           case 'fire': grow('fire');
             break;
 
-          case 'goomba': shrink(1);
+          case 'goomba': shrink();
             break;
 
-          case 'koopa': shrink(1);
+          case 'koopa': shrink();
             break;
 
           case 'life': sound('oneup');
             break;
 
-          case 'bones': shrink(1);
+          case 'bones': shrink();
             break;
 
-          case 'bowser':
-            victory = true;
-            shrink(3);
+          case 'bowser': endgame();
             break;
 
           case 'coin': sound('score');
@@ -142,6 +140,7 @@ function sound(type) {
 
   if (type === 'invincible') {
     $('#theme')[0].pause();
+    $('#player')[0].className = 'mario starmario';
     powerups.push('invincible');
     setTimeout(() => {
       powerups.pop();
@@ -154,43 +153,62 @@ function sound(type) {
   }
 }
 
-
-function shrink(damage) {
-
-  if (victory === true && (lives === 2 || powerups.length > 0)) {
-    alert('You win!');
+function endgame() {
+  if (lives === 2 || powerups.length > 0) {
+    $('body').append($('<div>', { class: 'win modal' }))
     $('#theme')[0].pause();
     $('#invincible')[0].pause();
     $('#victory')[0].play()
       .catch((error) => console.log(error.message));
   }
+}
+
+
+function shrink() {
 
   if (powerups.length === 0){
-    health -= damage;
-    if (health <= 0) {
-      --lives;
-      if (lives === 0) {
-        $('#theme')[0].pause();
-        $('#death')[0].play()
-          .catch((error) => console.log(error.message));
-        alert('Game over!');
-      } else {
-        $('#theme')[0].pause();
-        $('#death')[0].play()
-          .catch((error) => console.log(error.message));
-        $('#theme')[0].play()
-          .catch((error) => console.log(error.message));
-        health = 2;
-        $('#player')[0].className = 'mario-to-super mario';
+    --health;
+
+    switch(health) {
+      case 0: {
+        --lives;
+        if (lives === 1) {
+          health = 2;
+          $('#player')[0].className = 'mario';
+
+          $('#theme')[0].pause();
+
+          $('#death')[0].play()
+            .catch((error) => console.log(error.message));
+
+          $('#theme')[0].play()
+            .catch((error) => console.log(error.message));
+
+        } else if (lives === 0) {
+
+          $('#theme')[0].pause();
+
+          $('#death')[0].play()
+            .catch((error) => console.log(error.message));
+
+          $('body').append($('<div>', { class: 'lose modal' }))
+        }
       }
-    } else if (health === 1) {
-      $('#player')[0].className = 'super-to-mario minimario';
-      $('#shrink')[0].play()
-        .catch((error) => console.log(error.message));
-    } else if (health === 2) {
-      $('#player')[0].className = 'fire-to-super mario';
-      $('#shrink')[0].play()
-        .catch((error) => console.log(error.message));
+      break;
+      case 1: {
+        $('#player')[0].className = 'super-to-mario minimario';
+
+        $('#shrink')[0].play()
+          .catch((error) => console.log(error.message));
+      }
+      break;
+      case 2: {
+        $('#player')[0].className = 'fire-to-super mario';
+
+        $('#shrink')[0].play()
+          .catch((error) => console.log(error.message));
+      }
+      break;
     }
   }
 

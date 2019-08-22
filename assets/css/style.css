@@ -15,6 +15,15 @@
 
 }
 
+@keyframes starmario-flicker {
+  16.6% {background-image: url('../images/starmario1.png')}
+  33.3% {background-image: url('../images/starmario2.png')}
+  50% {background-image: url('../images/starmario3.png')}
+  66.6% {background-image: url('../images/starmario4.png')}
+  83.3% {background-image: url('../images/starmario5.png')}
+  100% {background-image: url('../images/starmario6.png')}
+}
+
 @keyframes fire-to-super-flicker {
   0% {background-image: url("../images/firemario.png")}
   20% {background-image: url("../images/mario.png")}
@@ -61,17 +70,17 @@
 }
 
 @keyframes open-header {
-  0% {position: absolute; top: 26%;}
-  10% {position: absolute; top: 23.4%;}
-  20% {position: absolute; top: 20.8%;}
-  30% {position: absolute; top: 18.2%;}
-  40% {position: absolute; top: 15.6%;}
-  50% {position: absolute; top: 13%;}
-  60% {position: absolute; top: 10.4%;}
-  70% {position: absolute; top: 7.8%;}
-  80% {position: absolute; top: 5.2%;}
-  90% {position: absolute; top: 2.6%;}
-  100% {position: absolute; top: 0%;}
+  0% {position: absolute; top: 20vw;}
+  10% {position: absolute; top: 18.5vw;}
+  20% {position: absolute; top: 17vw;}
+  30% {position: absolute; top: 15.5vw;}
+  40% {position: absolute; top: 14vw;}
+  50% {position: absolute; top: 12.5vw;}
+  60% {position: absolute; top: 11vw;}
+  70% {position: absolute; top: 9.5vw;}
+  80% {position: absolute; top: 8vw;}
+  90% {position: absolute; top: 6.5vw;}
+  100% {position: absolute; top: 5vw;}
 }
 
 @keyframes open-footer {
@@ -95,36 +104,49 @@
 body {
   height: 100vh;
   background-image: url("../images/background.png");
-  background-position-y: 100%;
   background-size: cover;
   overflow: hidden;
 }
 
 
 main {
-  height: 81%;
-  width:100%;
+  height: 71%;
+  width: 100%;
   position: absolute;
   top: 10vw;
 }
 
 header.game {
-  height: 10vw;
-  z-index: 10;
+  position: absolute;
+  height: 10vh;
+  width: 100%;
+  top: 5vw;
   animation-name: open-header;
   animation-duration: .65s;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: ease-out;
 }
 
 header.home {
   position: absolute;
-  z-index: 1;
-  top: 26%;
+  height: 50vh;
+  width: 100%;
+  top: 0;
 }
+
+header.home > div {
+  position: absolute;
+  bottom: 0;
+}
+
+header.game > div {
+  position: absolute;
+  bottom: 0;
+}
+
 
 header div.block:before {
   content: '';
-  position: relative;
+  position: absolute;
   display: inline-block;
   background-image: url('../images/brick.png');
   background-size: contain;
@@ -136,19 +158,20 @@ header div.block:before {
 
 header div.block:after {
   content: '';
-  position: relative;
+  position: absolute;
   display: inline-block;
   background-image: url('../images/brick.png');
   background-size: contain;
   background-repeat: no-repeat;
   height: 10vw;
   width: 10vw;
-  bottom: 30.4vw;
+  bottom: 20vw;
 }
 
 footer.home {
   position: absolute;
-  bottom: 6%;
+  bottom: 0;
+  height: 50vh;
 }
 
 footer.game {
@@ -159,7 +182,7 @@ footer.game {
   width: 100%;
   animation-name: open-footer;
   animation-duration: .65s;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: ease-out;
 }
 
 footer div.block:after {
@@ -218,9 +241,10 @@ footer div.block:before {
 }
 
 .title {
+  position: absolute;
   height: 10vw;
-  width: 100%;
-  top: 0vw;
+  width: 46%;
+  bottom: 0;
   left: 27vw;
   position: absolute;
   background-image: url("../images/supermario.png");
@@ -255,6 +279,25 @@ footer div.block:before {
   background-repeat: no-repeat;
   height: 10vw;
   width: 10vw;
+}
+
+.win {
+  background-image: url('../images/winmodal.png');
+
+}
+
+.lose {
+  background-image: url('../images/losemodal.png');
+}
+
+.modal {
+  position: absolute;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 10vw 10vw 10vw 10vw;
+  height: 80vw;
+  width: 80vw;
 }
 
 .play {
@@ -319,6 +362,12 @@ footer div.block:before {
   position: fixed;
   bottom: 5vw;
   left: 5vw;
+}
+
+.starmario {
+  animation-name: starmario-flicker;
+  animation-duration: 1s;
+  animation-iteration-count: 5;
 }
 
 

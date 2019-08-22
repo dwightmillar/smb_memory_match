@@ -1,6 +1,8 @@
 for (let blockIndex = 0; blockIndex < 10; blockIndex++){
-  $('header').prepend($('<div>', { class: 'block'}));
   $('footer').append($('<div>', { class: 'block' }));
+}
+for (let blockIndex = 0; blockIndex < 10; blockIndex++) {
+  $('header').prepend($('<div>').addClass('block').css('left', (blockIndex * 10) + 'vw'));
 }
 
 $('footer').prepend($('<button>', { id: 'play', class: 'play', text: 'PLAY'}));
