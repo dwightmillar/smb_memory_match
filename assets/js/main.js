@@ -4,6 +4,8 @@ var lives = 1;
 var powerups = [];
 var canClick = true;
 
+var sounds = new Sounds();
+
 
 var cardDeck =
 ['mushroom', 'mushroom',
@@ -48,8 +50,7 @@ class Card {
     if (canClick === false || this.canClick === false) {
       return
     }
-    $('#click')[0].play()
-      .catch((error) => console.log(error.message));
+    sounds.soundEffect('click');
     this.canClick = false;
     this.children[1].classList.toggle("hidden");
     this.children[0].classList.toggle("hidden");
@@ -80,37 +81,49 @@ class Card {
         $("." +  cardOneType).parent().off('click');
 
         switch ( cardOneType) {
-          case 'mushroom': grow();
+          case 'mushroom':
             points += 100;
+            grow();
             break;
 
-          case 'star': sound('invincible');
+          case 'star':
+            powerups.push('invincible');
+            $('#player').addClass('starmario');
+            sounds.invincibleMusic();
             break;
 
-          case 'fire': grow('fire');
+          case 'fire':
             points += 200;
+            grow('fire');
             break;
 
-          case 'goomba': shrink();
+          case 'goomba':
             points += 100;
+            shrink();
             break;
 
-          case 'koopa': shrink();
+          case 'koopa':
             points += 200;
+            shrink();
             break;
 
-          case 'life': sound('oneup');
+          case 'life':
+            ++lives;
+            sounds.soundEffect('oneup');
             break;
 
-          case 'bones': shrink();
+          case 'bones':
             points += 300;
+            shrink();
             break;
 
-          case 'bowser': endgame();
-          points += 1000;
+          case 'bowser':
+            debugger;
+            points += 1000;
+            endgame();
             break;
 
-          case 'coin': sound('score');
+          case 'coin': sounds.soundEffect('score');
             points += 500;
             break;
         }
@@ -140,55 +153,26 @@ function grow(fire) {
     health = 2;
   }
 
-  $('#grow')[0].play()
-    .catch((error) => console.log(error.message));
+  sounds.soundEffect('grow');
 
   console.log('Health: ', health);
   console.log('Powerups: ', powerups);
   console.log('Lives: ', lives);
 }
 
-function sound(type) {
-  ++tries;
-  ++matches;
-
-  $('#'+type)[0].play()
-    .catch((error) => console.log(error.message));
-
-  if (type === 'invincible') {
-    $('#theme')[0].pause();
-    $('#player')[0].className = 'mario starmario';
-    powerups.push('invincible');
-    setTimeout(() => {
-      powerups.pop();
-      $('#theme')[0].play()
-        .catch((error) => console.log(error.message));
-      $('#invincible')[0].pause()
-    }, 5000);
-  } else if (type === 'oneup') {
-    ++lives;
-  }
-}
 
 function endgame() {
   ++tries;
   ++matches;
+  canClick = false;
+  debugger;
 
   if (lives === 2 || powerups.length > 0) {
-    canClick = false;
     createModal('win');
-
-    $('#theme')[0].pause();
-    $('#invincible')[0].pause();
-    $('#victory')[0].play()
-      .catch((error) => console.log(error.message));
+    sounds.victoryMusic();
   } else {
-    canClick = false;
     createModal('lose');
-
-    $('#theme')[0].pause();
-    $('#death')[0].play()
-      .catch((error) => console.log(error.message));
+    sounds.deathMusic();
   }
 }
 
@@ -246,25 +230,11 @@ function shrink() {
     switch(health) {
       case 0: {
         --lives;
+        sounds.deathMusic();
         if (lives === 1) {
           health = 2;
           $('#player')[0].className = 'mario';
-
-          $('#theme')[0].pause();
-
-          $('#death')[0].play()
-            .catch((error) => console.log(error.message));
-
-          $('#theme')[0].play()
-            .catch((error) => console.log(error.message));
-
         } else if (lives === 0) {
-
-          $('#theme')[0].pause();
-
-          $('#death')[0].play()
-            .catch((error) => console.log(error.message));
-
           canClick = false;
           createModal('lose');
         }
@@ -272,16 +242,12 @@ function shrink() {
       break;
       case 1: {
         $('#player')[0].className = 'super-to-mario minimario';
-
-        $('#shrink')[0].play()
-          .catch((error) => console.log(error.message));
+        sounds.soundEffect('shrink');
       }
       break;
       case 2: {
         $('#player')[0].className = 'fire-to-super mario';
-
-        $('#shrink')[0].play()
-          .catch((error) => console.log(error.message));
+        sounds.soundEffect('shrink');
       }
       break;
     }
@@ -297,6 +263,11 @@ function resetGame() {
   $('.modal').remove();
 
   health = 2;
+  canClick = true;
+  tries = 0;
+  accuracy = 0;
+  points = 0;
+  matches = 0;
   $('#player')[0].className = 'mario';
 
   cardDeck =
