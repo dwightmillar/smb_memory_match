@@ -70,31 +70,31 @@
 }
 
 @keyframes open-header {
-  0% {position: absolute; top: 20vw;}
-  10% {position: absolute; top: 18.5vw;}
-  20% {position: absolute; top: 17vw;}
-  30% {position: absolute; top: 15.5vw;}
-  40% {position: absolute; top: 14vw;}
-  50% {position: absolute; top: 12.5vw;}
-  60% {position: absolute; top: 11vw;}
-  70% {position: absolute; top: 9.5vw;}
-  80% {position: absolute; top: 8vw;}
-  90% {position: absolute; top: 6.5vw;}
-  100% {position: absolute; top: 5vw;}
+  0% {bottom: 50vh;}
+  10% {bottom: 53vh;}
+  20% {bottom: 56vh;}
+  30% {bottom: 59vh;}
+  40% {bottom: 62vh;}
+  50% {bottom: 65vh;}
+  60% {bottom: 68vh;}
+  70% {bottom: 71vh;}
+  80% {bottom: 74vh;}
+  90% {bottom: 77vh;}
+  100% {bottom: 80vh;}
 }
 
 @keyframes open-footer {
-  0% {bottom: 28%;}
-  10% {bottom: 24%;}
-  20% {bottom: 20%;}
-  30% {bottom: 16%;}
-  40% {bottom: 12%;}
-  50% {bottom: 8%;}
-  60% {bottom: 4%;}
-  70% {bottom: 0%;}
-  80% {bottom: -4%;}
-  90% {bottom: -8%;}
-  100% {bottom: -12%;}
+  0% {top: 50vh;}
+  10% {top: 54.1vh;}
+  20% {top: 58.2vh;}
+  30% {top: 62.3vh;}
+  40% {top: 66.4vh;}
+  50% {top: 70.5vh;}
+  60% {top: 74.6vh;}
+  70% {top: 78.7vh;}
+  80% {top: 82.8vh;}
+  90% {top: 86.9vh;}
+  100% {top: 91vh;}
 }
 
 
@@ -109,18 +109,18 @@ body {
 }
 
 
-main {
-  height: 71%;
+main.row {
+  height: 71vh;
   width: 100%;
   position: absolute;
-  top: 10vw;
+  bottom: 50vw;
 }
 
 header.game {
   position: absolute;
-  height: 10vh;
+  height: 50vh;
   width: 100%;
-  top: 5vw;
+  bottom: 80vh;
   animation-name: open-header;
   animation-duration: .65s;
   animation-timing-function: ease-out;
@@ -128,17 +128,17 @@ header.game {
 
 header.home {
   position: absolute;
-  height: 50vh;
+  height: 70vh;
   width: 100%;
-  top: 0;
+  bottom: 50vh;
 }
 
-header.home > div {
+header.home > div.block {
   position: absolute;
   bottom: 0;
 }
 
-header.game > div {
+header.game > div.block {
   position: absolute;
   bottom: 0;
 }
@@ -170,15 +170,26 @@ header div.block:after {
 
 footer.home {
   position: absolute;
-  bottom: 0;
+  top: 50vh;
   height: 50vh;
+  width: 100%;
+}
+
+footer.home > div {
+  position: absolute;
+  top: 0;
+}
+
+footer.game > div {
+  position: absolute;
+  top: 0;
 }
 
 footer.game {
   position: fixed;
-  bottom: -12%;
+  top: 91vh;
   left: 0;
-  height: 10vw;
+  height: 50vw;
   width: 100%;
   animation-name: open-footer;
   animation-duration: .65s;
@@ -187,26 +198,26 @@ footer.game {
 
 footer div.block:after {
   content: '';
-  position: relative;
+  position: absolute;
   display: inline-block;
   background-image: url('../images/brick.png');
   background-size: contain;
   background-repeat: no-repeat;
   height: 10vw;
   width: 10vw;
-  top: -0.4vw;
+  top: 10vw;
 }
 
 footer div.block:before {
   content: '';
-  position: relative;
+  position: absolute;
   display: inline-block;
   background-image: url('../images/brick.png');
   background-size: contain;
   background-repeat: no-repeat;
   height: 10vw;
   width: 10vw;
-  top: 19.9vw;
+  top: 20vw;
 }
 
 .bounce {
@@ -243,9 +254,9 @@ footer div.block:before {
 .title {
   position: absolute;
   height: 10vw;
-  width: 46%;
-  bottom: 0;
-  left: 27vw;
+  width: 45vw;
+  bottom: -1vh;
+  left: 30vw;
   position: absolute;
   background-image: url("../images/supermario.png");
   background-repeat: no-repeat;
@@ -254,7 +265,7 @@ footer div.block:before {
 
 .container {
   padding: 0;
-  width: 89.2%;
+  width: 80vw;
   margin:0;
   display: inline-block;
 }
@@ -263,13 +274,34 @@ footer div.block:before {
   padding: 0;
 }
 
-/* .col-2-5 {
-    flex: 0 0 20.833333333333%;
-    max-width: 20.833333333333%;
-    position: relative;
-    width: 100%;
-    height: 100%;
-} */
+.scoretable {
+  position: relative;
+  top: 30%;
+  height: 12vw;
+  text-align: center;
+  font-size: 3vw;
+  color: whitesmoke;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+div.scoretable > div.row {
+  width: 100%;
+  height: 3vw;
+  padding: 0;
+}
+
+div.scoretable > div.row > div.col-6 {
+  height: 100%;
+}
+
+div.scoretable > div.row > div.col-12 {
+  width: 100%;
+  height: 100%;
+}
+
+.col-2 {
+    height: 16vh;
+}
 
 .block {
   position: relative;
@@ -295,29 +327,41 @@ footer div.block:before {
   display: inline-block;
   background-size: contain;
   background-repeat: no-repeat;
-  margin: 10vw 10vw 10vw 10vw;
-  height: 80vw;
+  margin: 21.5vh 10vw 21.5vh 10vw;
+  height: 25vw;
   width: 80vw;
 }
 
 .play {
-  position: absolute;
-  width: 8vw;
-  height: 4vw;
+  position: relative;
   border-radius: 1vw;
   z-index: 1;
   background-color: greenyellow;
-  left: 46vw;
-  top: 12vw;
+  left: 46.7%;
+  top: 8vh;
   color: darkolivegreen;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 2rem;
+  font-size: 3vw;
+}
+
+.modal .play {
+  /* position: relative; */
+  height: 5vw;
+  border-radius: 1vw;
+  top: 0;
+  left: 38%;
+  /* z-index: 1; */
+  background-color: greenyellow;
+  color: darkolivegreen;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 3vw;
 }
 
 .col-2-5 {
     position: relative;
     width: 20vw;
     height: 100%;
+    margin: 0;
 }
 
 .col-9-5 {
@@ -335,8 +379,8 @@ footer div.block:before {
   background-position-y: 100%;
   height: 90%;
   width: 10vw;
-  position: fixed;
-  bottom: 5vw;
+  position: absolute;
+  bottom: 0;
   left: 5vw;
 }
 
@@ -348,7 +392,7 @@ footer div.block:before {
   height: 90%;
   width: 10vw;
   position: fixed;
-  bottom: 5vw;
+  bottom: 9vh;
   left: 5vw;
 }
 
@@ -360,7 +404,7 @@ footer div.block:before {
   height: 90%;
   width: 10vw;
   position: fixed;
-  bottom: 5vw;
+  bottom: 9vh;
   left: 5vw;
 }
 
@@ -384,8 +428,8 @@ footer div.block:before {
 }
 
 div.row {
-  height: 27.2%;
-  padding: 1.6% 5%;
+  height: 20vh;
+  padding: 4% 5%;
 }
 
 .hidden {

@@ -2,7 +2,6 @@ var cardContainer = $("div.container");
 var health = 2;
 var lives = 1;
 var powerups = [];
-var victory = false;
 var canClick = true;
 
 
@@ -21,6 +20,11 @@ var cardOne = null;
 var cardTwo = null;
 var cardOneType = null;
 var cardTwoType = null;
+
+var tries = 0;
+var accuracy = 0;
+var points = 0;
+var matches = 0;
 
 
 class Card {
@@ -57,6 +61,7 @@ class Card {
       cardTwo = this;
       cardTwoType = cardTwo.children[1].className;
       if ( cardTwoType !==  cardOneType) {
+        ++tries;
         canClick = false;
         setTimeout(() => {
           cardOne.classList.toggle("bounce");
@@ -76,30 +81,37 @@ class Card {
 
         switch ( cardOneType) {
           case 'mushroom': grow();
+            points += 100;
             break;
 
           case 'star': sound('invincible');
             break;
 
           case 'fire': grow('fire');
+            points += 200;
             break;
 
           case 'goomba': shrink();
+            points += 100;
             break;
 
           case 'koopa': shrink();
+            points += 200;
             break;
 
           case 'life': sound('oneup');
             break;
 
           case 'bones': shrink();
+            points += 300;
             break;
 
           case 'bowser': endgame();
+          points += 1000;
             break;
 
           case 'coin': sound('score');
+            points += 500;
             break;
         }
 
@@ -113,6 +125,8 @@ class Card {
 
 
 function grow(fire) {
+  ++tries;
+  ++matches;
 
   if (fire === 'fire') {
     if (health === 1) {
@@ -135,6 +149,9 @@ function grow(fire) {
 }
 
 function sound(type) {
+  ++tries;
+  ++matches;
+
   $('#'+type)[0].play()
     .catch((error) => console.log(error.message));
 
@@ -154,17 +171,74 @@ function sound(type) {
 }
 
 function endgame() {
+  ++tries;
+  ++matches;
+
   if (lives === 2 || powerups.length > 0) {
-    $('body').append($('<div>', { class: 'win modal' }))
+    canClick = false;
+    createModal('win');
+
     $('#theme')[0].pause();
     $('#invincible')[0].pause();
     $('#victory')[0].play()
       .catch((error) => console.log(error.message));
+  } else {
+    canClick = false;
+    createModal('lose');
+
+    $('#theme')[0].pause();
+    $('#death')[0].play()
+      .catch((error) => console.log(error.message));
   }
+}
+
+function createModal(type) {
+
+  let scoreTable = $('<div>', { class: 'container-fluid scoretable'});
+
+  let attemptsRow = $('<div>', { class: 'row' });
+
+  let attemptsLabel = $('<div>', { class: 'col-6', text: 'Attempts: '});
+  let attempts = $('<div>', { class: 'col-6', text: tries });
+  attemptsRow.append(attemptsLabel);
+  attemptsRow.append(attempts);
+
+  let accuracyRow = $('<div>', { class: 'row' });
+
+  let accuracyLabel = $('<div>', { class: 'col-6',text: 'Accuracy: ' });
+  let accuracy = $('<div>', { class: 'col-6', text: Math.round(matches/tries*100) + '%'});
+  accuracyRow.append(accuracyLabel);
+  accuracyRow.append(accuracy);
+
+  let pointsRow = $('<div>', { class: 'row' });
+
+  let pointsLabel = $('<div>', { class: 'col-6', text: 'Points: ' });
+  let pointCount = $('<div>', { class: 'col-6', text: points });
+  pointsRow.append(pointsLabel);
+  pointsRow.append(pointCount);
+
+  let buttonRow = $('<div>', { class: 'row' })
+
+  let buttonDiv = $('<div>', { class: 'col-12' });
+  let playButton = $('<button>', { id: 'play', class: 'play', text: 'PLAY AGAIN?' })
+  buttonRow.append(buttonDiv).append(playButton);
+
+  scoreTable.append(attemptsRow);
+  scoreTable.append(accuracyRow);
+  scoreTable.append(pointsRow);
+  scoreTable.append(buttonRow);
+
+  $('body').append($('<div>', { class: type + ' modal' }))
+  $('div.modal').append($(scoreTable));
+  $('div.modal').append();
+  $('#play').on('click', resetGame);
+
 }
 
 
 function shrink() {
+  ++tries;
+  ++matches;
 
   if (powerups.length === 0){
     --health;
@@ -191,7 +265,8 @@ function shrink() {
           $('#death')[0].play()
             .catch((error) => console.log(error.message));
 
-          $('body').append($('<div>', { class: 'lose modal' }))
+          canClick = false;
+          createModal('lose');
         }
       }
       break;
@@ -217,11 +292,32 @@ function shrink() {
   console.log('Lives: ', lives);
 }
 
+function resetGame() {
+  $('div.row').remove();
+  $('.modal').remove();
+
+  health = 2;
+  $('#player')[0].className = 'mario';
+
+  cardDeck =
+    ['mushroom', 'mushroom',
+      'star', 'star',
+      'fire', 'fire',
+      'goomba', 'goomba',
+      'koopa', 'koopa',
+      'life', 'life',
+      'bones', 'bones',
+      'bowser', 'bowser',
+      'coin', 'coin'];
+
+  setGame();
+}
 
 
 function setGame() {
   $('#theme')[0].play()
     .catch((error) => console.log(error.message));
+
   for (var rowIndex = 0; rowIndex < 3; rowIndex++) {
     let cardRow = $("<div>", { class: "row" });
     cardContainer.append(cardRow);
