@@ -1,46 +1,371 @@
+@keyframes bounce {
+  0% {bottom: 1px}
+  8.3% {bottom: 3px}
+  16.7% {bottom: 6px}
+  25% {bottom: 10px}
+  33.3% {bottom: 15px}
+  41.7% {bottom: 21px}
+  50% {bottom: 25px}
+  58.3% {bottom: 21px}
+  66.6% {bottom: 15px}
+  75% {bottom: 10px}
+  83.3% {bottom: 6px}
+  91.7% {bottom: 3px}
+  100% {bottom: 1px}
+
+}
+
+@keyframes starmario-flicker {
+  16.6% {background-image: url('../images/starmario1.png')}
+  33.3% {background-image: url('../images/starmario2.png')}
+  50% {background-image: url('../images/starmario3.png')}
+  66.6% {background-image: url('../images/starmario4.png')}
+  83.3% {background-image: url('../images/starmario5.png')}
+  100% {background-image: url('../images/starmario6.png')}
+}
+
+@keyframes fire-to-super-flicker {
+  0% {background-image: url("../images/firemario.png")}
+  20% {background-image: url("../images/mario.png")}
+  40% {background-image: url("../images/firemario.png")}
+  60% {background-image: url("../images/mario.png")}
+  80% {background-image: url("../images/firemario.png")}
+  100% {background-image: url("../images/mario.png")}
+}
+
+@keyframes super-to-fire-flicker {
+  0% {background-image: url("../images/mario.png")}
+  20% {background-image: url("../images/firemario.png")}
+  40% {background-image: url("../images/mario.png")}
+  60% {background-image: url("../images/firemario.png")}
+  80% {background-image: url("../images/mario.png")}
+  100% {background-image: url("../images/firemario.png")}
+}
+
+@keyframes mario-to-fire-flicker {
+  0% {background-image: url("../images/minimario.png")}
+  20% {background-image: url("../images/firemario.png")}
+  40% {background-image: url("../images/minimario.png")}
+  60% {background-image: url("../images/firemario.png")}
+  80% {background-image: url("../images/minimario.png")}
+  100% {background-image: url("../images/firemario.png")}
+}
+
+@keyframes super-to-mario-flicker {
+  0% {background-image: url("../images/mario.png")}
+  20% {background-image: url("../images/minimario.png")}
+  40% {background-image: url("../images/mario.png")}
+  60% {background-image: url("../images/minimario.png")}
+  80% {background-image: url("../images/mario.png")}
+  100% {background-image: url("../images/minimario.png")}
+}
+
+@keyframes mario-to-super-flicker {
+  0% {background-image: url("../images/minimario.png")}
+  20% {background-image: url("../images/mario.png")}
+  40% {background-image: url("../images/minimario.png")}
+  60% {background-image: url("../images/mario.png")}
+  80% {background-image: url("../images/minimario.png")}
+  100% {background-image: url("../images/mario.png")}
+}
+
+@keyframes open-header {
+  0% {bottom: 50vh;}
+  10% {bottom: 53vh;}
+  20% {bottom: 56vh;}
+  30% {bottom: 59vh;}
+  40% {bottom: 62vh;}
+  50% {bottom: 65vh;}
+  60% {bottom: 68vh;}
+  70% {bottom: 71vh;}
+  80% {bottom: 74vh;}
+  90% {bottom: 77vh;}
+  100% {bottom: 80vh;}
+}
+
+@keyframes open-footer {
+  0% {top: 50vh;}
+  10% {top: 54.1vh;}
+  20% {top: 58.2vh;}
+  30% {top: 62.3vh;}
+  40% {top: 66.4vh;}
+  50% {top: 70.5vh;}
+  60% {top: 74.6vh;}
+  70% {top: 78.7vh;}
+  80% {top: 82.8vh;}
+  90% {top: 86.9vh;}
+  100% {top: 91vh;}
+}
+
+
+
+
+
 body {
   height: 100vh;
+  background-image: url("../images/background.png");
+  background-size: cover;
   overflow: hidden;
 }
 
-header {
-  height: 19%;
-  background-image: url("../images/brick.png")
+
+main.row {
+  height: 71vh;
+  width: 100%;
+  position: absolute;
+  bottom: 50vw;
 }
 
-main {
-  height: 81%;
+header.game {
+  position: absolute;
+  height: 50vh;
+  width: 100%;
+  bottom: 80vh;
+  animation-name: open-header;
+  animation-duration: .65s;
+  animation-timing-function: ease-out;
 }
 
-/* aside.container  {
-  width: 20.8%;
-  height: 100%;
+header.home {
+  position: absolute;
+  height: 70vh;
+  width: 100%;
+  bottom: 50vh;
+}
+
+header.home > div.block {
+  position: absolute;
+  bottom: 0;
+}
+
+header.game > div.block {
+  position: absolute;
+  bottom: 0;
+}
+
+
+header div.block:before {
+  content: '';
+  position: absolute;
   display: inline-block;
-} */
+  background-image: url('../images/brick.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 10vw;
+  width: 10vw;
+  bottom: 10vw;
+}
+
+header div.block:after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  background-image: url('../images/brick.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 10vw;
+  width: 10vw;
+  bottom: 20vw;
+}
+
+footer.home {
+  position: absolute;
+  top: 50vh;
+  height: 50vh;
+  width: 100%;
+}
+
+footer.home > div {
+  position: absolute;
+  top: 0;
+}
+
+footer.game > div {
+  position: absolute;
+  top: 0;
+}
+
+footer.game {
+  position: fixed;
+  top: 91vh;
+  left: 0;
+  height: 50vw;
+  width: 100%;
+  animation-name: open-footer;
+  animation-duration: .65s;
+  animation-timing-function: ease-out;
+}
+
+footer div.block:after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  background-image: url('../images/brick.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 10vw;
+  width: 10vw;
+  top: 10vw;
+}
+
+footer div.block:before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  background-image: url('../images/brick.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 10vw;
+  width: 10vw;
+  top: 20vw;
+}
+
+.bounce {
+  animation-name: bounce;
+  animation-duration: 0.25s;
+}
+
+.super-to-mario {
+  animation-name: super-to-mario-flicker;
+  animation-duration: 1.5s;
+
+}
+
+.mario-to-super {
+  animation-name: mario-to-super-flicker;
+  animation-duration: 1.5s;
+}
+
+.mario-to-fire {
+  animation-name: mario-to-fire-flicker;
+  animation-duration: 1.5s;
+}
+
+.super-to-fire {
+  animation-name: super-to-fire-flicker;
+  animation-duration: 1.5s;
+}
+
+.fire-to-super {
+  animation-name: fire-to-super-flicker;
+  animation-duration: 1.5s;
+}
+
+.title {
+  position: absolute;
+  height: 10vw;
+  width: 45vw;
+  bottom: -1vh;
+  left: 30vw;
+  position: absolute;
+  background-image: url("../images/supermario.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 
 .container {
   padding: 0;
-  width: 89.2%;
+  width: 80vw;
   margin:0;
   display: inline-block;
 }
 
-/* .col-2-5 {
-    flex: 0 0 20.833333333333%;
-    max-width: 20.833333333333%;
-    position: relative;
-    width: 100%;
-    height: 100%;
-} */
+.container-fluid {
+  padding: 0;
+}
+
+.scoretable {
+  position: relative;
+  top: 30%;
+  height: 12vw;
+  text-align: center;
+  font-size: 3vw;
+  color: whitesmoke;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+div.scoretable > div.row {
+  width: 100%;
+  height: 3vw;
+  padding: 0;
+}
+
+div.scoretable > div.row > div.col-6 {
+  height: 100%;
+}
+
+div.scoretable > div.row > div.col-12 {
+  width: 100%;
+  height: 100%;
+}
+
+.col-2 {
+    height: 16vh;
+}
+
+.block {
+  position: relative;
+  display: inline-block;
+  background-image: url('../images/brick.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 10vw;
+  width: 10vw;
+}
+
+.win {
+  background-image: url('../images/winmodal.png');
+
+}
+
+.lose {
+  background-image: url('../images/losemodal.png');
+}
+
+.modal {
+  position: absolute;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 21.5vh 10vw 21.5vh 10vw;
+  height: 25vw;
+  width: 80vw;
+}
+
+.play {
+  position: relative;
+  border-radius: 1vw;
+  z-index: 1;
+  background-color: greenyellow;
+  left: 46.7%;
+  top: 8vh;
+  color: darkolivegreen;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 3vw;
+}
+
+.modal .play {
+  /* position: relative; */
+  height: 5vw;
+  border-radius: 1vw;
+  top: 0;
+  left: 38%;
+  /* z-index: 1; */
+  background-color: greenyellow;
+  color: darkolivegreen;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 3vw;
+}
 
 .col-2-5 {
     position: relative;
-    width: 240.58px;
+    width: 20vw;
     height: 100%;
+    margin: 0;
 }
 
 .col-9-5 {
-  flex: 0 0 100%;
+  flex: 0 0 79.166666666667%;
   max-width: 79.166666666667%;
   position: relative;
   width: 100%;
@@ -52,9 +377,11 @@ main {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: 100%;
-  background-position-x: 50%;
-  height: 50%;
-  width: 100%;
+  height: 90%;
+  width: 10vw;
+  position: absolute;
+  bottom: 0;
+  left: 5vw;
 }
 
 .minimario {
@@ -62,9 +389,11 @@ main {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: 100%;
-  background-position-x: 50%;
-  height: 50%;
-  width: 100%;
+  height: 90%;
+  width: 10vw;
+  position: fixed;
+  bottom: 9vh;
+  left: 5vw;
 }
 
 .firemario {
@@ -72,18 +401,22 @@ main {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: 100%;
-  background-position-x: 50%;
-  height: 50%;
-  width: 100%;
+  height: 90%;
+  width: 10vw;
+  position: fixed;
+  bottom: 9vh;
+  left: 5vw;
 }
 
-.panel {
-  background-image: url("../images/brick.png");
-  height: 50%;
-  width: 100%;
+.starmario {
+  animation-name: starmario-flicker;
+  animation-duration: 1s;
+  animation-iteration-count: 5;
 }
 
-.card {
+
+
+.back {
   height: 100%;
   padding: 0;
   margin: 0;
@@ -95,8 +428,8 @@ main {
 }
 
 div.row {
-  height: 30%;
-  padding: 1.6% 5%;
+  height: 20vh;
+  padding: 4% 5%;
 }
 
 .hidden {
