@@ -21,5 +21,9 @@ function startGame() {
   setGame();
   $('header')[0].className = 'game';
   $('footer')[0].className = 'game';
-  setTimeout(() => $('#play').remove(), 650);
+  $('body').on('click', () => $('.info').remove());
+  setTimeout(() => {
+    $('#play').remove();
+    $('body').prepend($('<div>', { class: 'info modal' }));
+  }, 650);
 }

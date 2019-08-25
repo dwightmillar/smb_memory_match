@@ -88,8 +88,22 @@ class Card {
 
           case 'star':
             powerups.push('invincible');
-            $('#player').addClass('starmario');
+            setTimeout(() => powerups.pop(), 5000);
             sounds.invincibleMusic();
+            switch(health) {
+              case 1:
+                $('#player').addClass('starminimario');
+                setTimeout(() => $('#player')[0].className = 'minimario', 5000);
+                 break;
+              case 2:
+                $('#player').addClass('starmario');
+                setTimeout(() => $('#player')[0].className = 'mario', 5000);
+                break;
+              case 3:
+                $('#player').addClass('starfiremario');
+                setTimeout(() => $('#player')[0].className = 'firemario', 5000);
+                break;
+            }
             break;
 
           case 'fire':
@@ -118,7 +132,6 @@ class Card {
             break;
 
           case 'bowser':
-            debugger;
             points += 1000;
             endgame();
             break;
@@ -143,13 +156,15 @@ function grow(fire) {
 
   if (fire === 'fire') {
     if (health === 1) {
-      $('#player')[0].className = 'mario-to-fire firemario';
+      $('#player').addClass('mario-to-fire');
     } else if (health === 2) {
-      $('#player')[0].className = 'super-to-fire firemario';
+      $('#player').addClass('super-to-fire');
     }
+    setTimeout(() => $('#player')[0].className = 'firemario', 800);
     health = 3;
   } else if (health === 1) {
-    $('#player')[0].className = 'mario-to-super mario';
+    $('#player').addClass('mario-to-super');
+    setTimeout(() => $('#player')[0].className = 'mario', 800);
     health = 2;
   }
 
@@ -165,7 +180,6 @@ function endgame() {
   ++tries;
   ++matches;
   canClick = false;
-  debugger;
 
   if (lives === 2 || powerups.length > 0) {
     createModal('win');
@@ -241,12 +255,14 @@ function shrink() {
       }
       break;
       case 1: {
-        $('#player')[0].className = 'super-to-mario minimario';
+        $('#player').addClass('super-to-mario');
+        setTimeout(() => $('#player')[0].className = 'minimario', 800);
         sounds.soundEffect('shrink');
       }
       break;
       case 2: {
-        $('#player')[0].className = 'fire-to-super mario';
+        $('#player').addClass('fire-to-super');
+        setTimeout(() => $('#player')[0].className = 'mario', 800);
         sounds.soundEffect('shrink');
       }
       break;
