@@ -24,9 +24,11 @@ var cardOneType = null;
 var cardTwoType = null;
 
 var tries = 0;
-var accuracy = 0;
+var percentAccuracy = 0;
 var points = 0;
 var matches = 0;
+var digits = 0;
+var score = 0;
 
 
 class Card {
@@ -78,15 +80,17 @@ class Card {
           cardTwo = null;
         }, 500);
       } else {
+        ++matches;
         $("." +  cardOneType).parent().off('click');
 
         switch ( cardOneType) {
           case 'mushroom':
-            points += 100;
+            updatePointCounter(100);
             grow();
             break;
 
           case 'star':
+            updatePointCounter(100);
             powerups.push('invincible');
             setTimeout(() => powerups.pop(), 5000);
             sounds.invincibleMusic();
@@ -107,37 +111,39 @@ class Card {
             break;
 
           case 'fire':
-            points += 200;
+            updatePointCounter(100);
             grow('fire');
             break;
 
           case 'goomba':
-            points += 100;
+            updatePointCounter(100);
             shrink();
             break;
 
           case 'koopa':
-            points += 200;
+            updatePointCounter(100);
             shrink();
             break;
 
           case 'life':
+            updatePointCounter(100);
             ++lives;
             sounds.soundEffect('oneup');
             break;
 
           case 'bones':
-            points += 300;
+            updatePointCounter(100);
             shrink();
             break;
 
           case 'bowser':
-            points += 1000;
+            updatePointCounter(100);
             endgame();
             break;
 
-          case 'coin': sounds.soundEffect('score');
-            points += 500;
+          case 'coin':
+            sounds.soundEffect('score');
+            updatePointCounter(100);
             break;
         }
 
@@ -148,11 +154,58 @@ class Card {
   }
 }
 
+function updatePointCounter(addPoints) {
+  calculateAccuracy();
+
+  if(addPoints) {
+    points = (points + addPoints) + '';
+    score = Math.round(points * percentAccuracy) + '';
+
+    digits = points.split('');
+    points = Number(points);
+
+    scoreDigits = score.split('');
+    score = Number(score);
+
+    accuracyDigits = (percentAccuracy + '').split('');
+
+    for (let digitIndex = 0; digitIndex < 4; digitIndex++) {
+      let currentDigit = digits[digits.length - 1 - digitIndex];
+      $('.points > .digit')[3 - digitIndex].style.backgroundImage = `url("./assets/images/${currentDigit}.png")`;
+    }
+  }
+
+  console.log('score: ',score);
+  console.log('digits: ',digits);
+
+
+
+  if (!addPoints) {
+    for (let digitIndex = 0; digitIndex < 4; digitIndex++) {
+      let currentDigit = digits[digits.length - 1 - digitIndex];
+      $('.col-4 > .digit#points')[3 - digitIndex].style.backgroundImage = `url("./assets/images/${currentDigit}.png")`;
+    }
+    for (let digitIndex = 0; digitIndex < 3; digitIndex++) {
+      let currentDigit = accuracyDigits[accuracyDigits.length - 1 - digitIndex];
+      $('.col-4 > .digit#accuracy')[2 - digitIndex].style.backgroundImage = `url("./assets/images/${currentDigit}.png")`;
+    }
+    for (let digitIndex = 0; digitIndex < 4; digitIndex++) {
+      let currentDigit = scoreDigits[scoreDigits.length - 1 - digitIndex];
+      $('.col-4 > .digit#score')[3 - digitIndex].style.backgroundImage = `url("./assets/images/${currentDigit}.png")`;
+    }
+  }
+};
+
+function calculateAccuracy() {
+  if (tries) {
+    percentAccuracy = (matches / tries).toFixed(2);
+  }
+  console.log('accuracy: ',percentAccuracy);
+};
+
 
 
 function grow(fire) {
-  ++tries;
-  ++matches;
 
   if (fire === 'fire') {
     if (health === 1) {
@@ -177,8 +230,6 @@ function grow(fire) {
 
 
 function endgame() {
-  ++tries;
-  ++matches;
   canClick = false;
 
   if (lives === 2 || powerups.length > 0) {
@@ -192,38 +243,51 @@ function endgame() {
 
 function createModal(type) {
 
-  let scoreTable = $('<div>', { class: 'container-fluid scoretable'});
+  const scoreTable = $('<div>', { class: 'container-fluid scoretable'});
 
-  let attemptsRow = $('<div>', { class: 'row' });
+  const labelsRow = $('<div>', { class: 'row' });
 
-  let attemptsLabel = $('<div>', { class: 'col-6', text: 'Attempts: '});
-  let attempts = $('<div>', { class: 'col-6', text: tries });
-  attemptsRow.append(attemptsLabel);
-  attemptsRow.append(attempts);
+  const pointsLabel = $('<div>', { class: 'col-4', css: {"background-image": "url(./assets/images/points.png)"} });
+  const accuracyLabel = $('<div>', { class: 'col-4', css: { "background-image": "url(./assets/images/accuracy.png)"} });
+  const scoreLabel = $('<div>', { class: 'col-4', css: { "background-image": "url(./assets/images/score.png)"} });
+  labelsRow.append(pointsLabel);
+  labelsRow.append(accuracyLabel);
+  labelsRow.append(scoreLabel);
 
-  let accuracyRow = $('<div>', { class: 'row' });
+  const numbersRow = $('<div>', { class: 'row' });
 
-  let accuracyLabel = $('<div>', { class: 'col-6',text: 'Accuracy: ' });
-  let accuracy = $('<div>', { class: 'col-6', text: Math.round(matches/tries*100) + '%'});
-  accuracyRow.append(accuracyLabel);
-  accuracyRow.append(accuracy);
+  const numberOfPoints = $('<div>', { class: 'col-4', css: { "padding-left": "7%" } });
+    numberOfPoints.append($('<div>', { class: 'digit', id: 'points' }));
+    numberOfPoints.append($('<div>', { class: 'digit', id: 'points' }));
+    numberOfPoints.append($('<div>', { class: 'digit', id: 'points' }));
+    numberOfPoints.append($('<div>', { class: 'digit', id: 'points' }));
 
-  let pointsRow = $('<div>', { class: 'row' });
 
-  let pointsLabel = $('<div>', { class: 'col-6', text: 'Points: ' });
-  let pointCount = $('<div>', { class: 'col-6', text: points });
-  pointsRow.append(pointsLabel);
-  pointsRow.append(pointCount);
+  const accuracyScore = $('<div>', { class: 'col-4', css: { "padding-left": "7%" } });
+    accuracyScore.append($('<div>', { class: 'digit', id: 'accuracy' }));
+    accuracyScore.append($('<div>', { class: 'digit', id: 'accuracy' }));
+    accuracyScore.append($('<div>', { class: 'digit', id: 'accuracy' }));
+    accuracyScore.append($('<div>', { class: 'digit', css: { "background-image": "url(./assets/images/percent-sign.png)" }}));
 
-  let buttonRow = $('<div>', { class: 'row' })
 
-  let buttonDiv = $('<div>', { class: 'col-12' });
-  let playButton = $('<button>', { id: 'play', class: 'play', text: 'PLAY AGAIN?' })
+  const scoreColumn = $('<div>', { class: 'col-4', css: { "padding-left": "7%" } });
+    scoreColumn.append($('<div>', { class: 'digit', id: 'score' }));
+    scoreColumn.append($('<div>', { class: 'digit', id: 'score' }));
+    scoreColumn.append($('<div>', { class: 'digit', id: 'score' }));
+    scoreColumn.append($('<div>', { class: 'digit', id: 'score' }));
+
+  numbersRow.append(numberOfPoints);
+  numbersRow.append(accuracyScore);
+  numbersRow.append(scoreColumn);
+
+  const buttonRow = $('<div>', { class: 'row' })
+
+  const buttonDiv = $('<div>', { class: 'col-12' });
+  const playButton = $('<button>', { id: 'play', class: 'play', text: 'PLAY AGAIN?' })
   buttonRow.append(buttonDiv).append(playButton);
 
-  scoreTable.append(attemptsRow);
-  scoreTable.append(accuracyRow);
-  scoreTable.append(pointsRow);
+  scoreTable.append(labelsRow);
+  scoreTable.append(numbersRow);
   scoreTable.append(buttonRow);
 
   $('body').append($('<div>', { class: type + ' modal' }))
@@ -231,12 +295,12 @@ function createModal(type) {
   $('div.modal').append();
   $('#play').on('click', resetGame);
 
+  updatePointCounter();
+
 }
 
 
 function shrink() {
-  ++tries;
-  ++matches;
 
   if (powerups.length === 0){
     --health;
@@ -278,10 +342,14 @@ function resetGame() {
   $('div.row').remove();
   $('.modal').remove();
 
+  for (let digitIndex = 0; digitIndex < 4; digitIndex++) {
+    $('.points > .digit')[3 - digitIndex].style.backgroundImage = `url("./assets/images/0.png")`;
+  }
+
   health = 2;
   canClick = true;
   tries = 0;
-  accuracy = 0;
+  percentAccuracy = 0;
   points = 0;
   matches = 0;
   $('#player')[0].className = 'mario';

@@ -198,7 +198,7 @@ footer div.block:before {
 
 .scoretable {
   position: relative;
-  top: 30%;
+  top: 40%;
   height: 12vw;
   text-align: center;
   font-size: 3vw;
@@ -212,8 +212,11 @@ div.scoretable > div.row {
   padding: 0;
 }
 
-div.scoretable > div.row > div.col-6 {
+div.scoretable > div.row > div.col-4 {
   height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
 }
 
 div.scoretable > div.row > div.col-12 {
@@ -301,16 +304,38 @@ div.scoretable > div.row > div.col-12 {
   height: 100%;
 }
 
+aside {
+  padding-left: 5%;
+}
+
+.points {
+  height: 20%;
+  width: 100%;
+  left: 20%;
+  position: absolute;
+}
+
+.digit {
+  height: 100%;
+  width: 20%;
+  display: inline-block;
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('../images/0.png');
+}
+
 .mario {
   background-image: url("../images/mario.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: 100%;
-  height: 90%;
-  width: 10vw;
+  background-position-x: 50%;
+  height: 80%;
+  width: 60%;
   position: absolute;
   bottom: 0;
-  left: 5vw;
+  left: 30%;
 }
 
 .minimario {
@@ -318,11 +343,12 @@ div.scoretable > div.row > div.col-12 {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: 100%;
-  height: 90%;
-  width: 10vw;
-  position: fixed;
-  bottom: 9vh;
-  left: 5vw;
+  background-position-x: 50%;
+  height: 80%;
+  width: 60%;
+  position: absolute;
+  bottom: 0;
+  left: 30%;
 }
 
 .firemario {
@@ -330,11 +356,12 @@ div.scoretable > div.row > div.col-12 {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: 100%;
-  height: 90%;
-  width: 10vw;
-  position: fixed;
-  bottom: 9vh;
-  left: 5vw;
+  background-position-x: 50%;
+  height: 80%;
+  width: 60%;
+  position: absolute;
+  bottom: 0;
+  left: 30%;
 }
 
 .starmario {
