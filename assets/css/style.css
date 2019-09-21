@@ -426,7 +426,7 @@ aside {
   padding: 0;
   margin: 0;
   border: none;
-  background-image: url("../images/mysterybox.png");
+  background-image: url("../images/question_block.gif");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
