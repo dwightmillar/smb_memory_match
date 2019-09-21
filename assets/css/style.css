@@ -54,6 +54,18 @@ body {
   overflow: hidden;
 }
 
+header {
+  background-image: url("../images/brick_background.png");
+  background-size: cover;
+  background-position: right bottom;
+}
+
+footer {
+  background-image: url("../images/brick_background.png");
+  background-size: cover;
+  background-position: right top;
+}
+
 
 main.row {
   height: 71vh;
