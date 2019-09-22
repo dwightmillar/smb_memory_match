@@ -175,10 +175,6 @@ function updatePointCounter(addPoints) {
     }
   }
 
-  console.log('score: ',score);
-  console.log('digits: ',digits);
-
-
 
   if (!addPoints) {
     for (let digitIndex = 0; digitIndex < 4; digitIndex++) {
@@ -194,14 +190,14 @@ function updatePointCounter(addPoints) {
       $('.col-4 > .digit#score')[3 - digitIndex].style.backgroundImage = `url("./assets/images/${currentDigit}.png")`;
     }
   }
-};
+}
 
 function calculateAccuracy() {
   if (tries) {
     percentAccuracy = (matches / tries).toFixed(2);
   }
   console.log('accuracy: ',percentAccuracy);
-};
+}
 
 
 

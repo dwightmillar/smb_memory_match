@@ -17,16 +17,16 @@
 
 @keyframes open-header {
   0% {bottom: 50vh;}
-  10% {bottom: 53vh;}
-  20% {bottom: 56vh;}
-  30% {bottom: 59vh;}
-  40% {bottom: 62vh;}
-  50% {bottom: 65vh;}
-  60% {bottom: 68vh;}
-  70% {bottom: 71vh;}
-  80% {bottom: 74vh;}
-  90% {bottom: 77vh;}
-  100% {bottom: 80vh;}
+  10% {bottom: 55vh;}
+  20% {bottom: 60vh;}
+  30% {bottom: 65vh;}
+  40% {bottom: 70vh;}
+  50% {bottom: 75vh;}
+  60% {bottom: 80vh;}
+  70% {bottom: 85vh;}
+  80% {bottom: 90vh;}
+  90% {bottom: 95vh;}
+  100% {bottom: 100vh;}
 }
 
 @keyframes open-footer {
@@ -44,11 +44,15 @@
 }
 
 
-
-
+@font-face {
+  font-family: smbFont;
+  src: url("../fonts/538fonts_super-mario-286/Super\ Mario\ 286.ttf")
+}
 
 body {
   height: 100vh;
+  font-family: smbFont;
+  color: white;
   background-image: url("../images/background.png");
   background-size: cover;
   overflow: hidden;
@@ -57,28 +61,27 @@ body {
 header {
   background-image: url("../images/brick_background.png");
   background-size: cover;
-  background-position: right bottom;
+  background-position: bottom;
 }
 
 footer {
   background-image: url("../images/brick_background.png");
   background-size: cover;
-  background-position: right top;
+  background-position: top;
 }
 
 
-main.row {
-  height: 71vh;
+main {
+  height: 100%;
   width: 100%;
-  position: absolute;
   bottom: 50vw;
 }
 
 header.game {
   position: absolute;
   height: 50vh;
-  width: 100%;
-  bottom: 80vh;
+  width: 100vw;
+  bottom: 100vh;
   animation-name: open-header;
   animation-duration: .65s;
   animation-timing-function: ease-out;
@@ -87,60 +90,15 @@ header.game {
 header.home {
   position: absolute;
   height: 70vh;
-  width: 100%;
+  width: 100vw;
   bottom: 50vh;
-}
-
-header.home > div.block {
-  position: absolute;
-  bottom: 0;
-}
-
-header.game > div.block {
-  position: absolute;
-  bottom: 0;
-}
-
-
-header div.block:before {
-  content: '';
-  position: absolute;
-  display: inline-block;
-  background-image: url('../images/brick.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 10vw;
-  width: 10vw;
-  bottom: 10vw;
-}
-
-header div.block:after {
-  content: '';
-  position: absolute;
-  display: inline-block;
-  background-image: url('../images/brick.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 10vw;
-  width: 10vw;
-  bottom: 20vw;
 }
 
 footer.home {
   position: absolute;
   top: 50vh;
-  height: 50vh;
-  width: 100%;
-}
-
-footer.home > div {
-  position: absolute;
-  top: 0;
-}
-
-footer.game > div {
-  position: absolute;
-  top: 0;
+  height: 70vh;
+  width: 100vw;
 }
 
 footer.game {
@@ -148,34 +106,10 @@ footer.game {
   top: 91vh;
   left: 0;
   height: 50vw;
-  width: 100%;
+  width: 100vw;
   animation-name: open-footer;
   animation-duration: .65s;
   animation-timing-function: ease-out;
-}
-
-footer div.block:after {
-  content: '';
-  position: absolute;
-  display: inline-block;
-  background-image: url('../images/brick.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 10vw;
-  width: 10vw;
-  top: 10vw;
-}
-
-footer div.block:before {
-  content: '';
-  position: absolute;
-  display: inline-block;
-  background-image: url('../images/brick.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 10vw;
-  width: 10vw;
-  top: 20vw;
 }
 
 .bounce {
@@ -186,11 +120,11 @@ footer div.block:before {
 
 
 div.title {
-  height: 10vw;
-  min-height: 136px;
-  width: 45vw;
+  height: 8vh;
+  min-height: 100px;
+  width: 70vw;
   min-width: 600px;
-  bottom: 0;
+  bottom: 1vw;
   position: absolute;
   margin-left: auto;
   margin-right: auto;
@@ -242,7 +176,7 @@ div.scoretable > div.row > div.col-12 {
 }
 
 .col-2 {
-    height: 16vh;
+  height: 100%;
 }
 
 .block {
@@ -282,7 +216,7 @@ div.scoretable > div.row > div.col-12 {
   left: 46.7%;
   top: 8vh;
   color: darkolivegreen;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
   font-size: 3vw;
 }
 
@@ -321,15 +255,14 @@ div.scoretable > div.row > div.col-12 {
   height: 100%;
 }
 
-aside {
-  padding-left: 5%;
+aside.row {
+  height: 40%;
+  padding-bottom: 9vh;
 }
 
 .points {
-  height: 20%;
+  min-width: 20px;
   width: 100%;
-  left: 20%;
-  position: absolute;
 }
 
 .digit {
@@ -346,39 +279,30 @@ aside {
   background-image: url("../images/mario.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position-y: 100%;
-  background-position-x: 50%;
-  height: 80%;
-  width: 60%;
-  position: absolute;
+  background-position: center;
+  height: 100%;
+  width: 100%;
   bottom: 0;
-  left: 30%;
 }
 
 .minimario {
   background-image: url("../images/minimario.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position-y: 100%;
-  background-position-x: 50%;
-  height: 80%;
-  width: 60%;
-  position: absolute;
+  background-position: center;
+  height: 100%;
+  width: 100%;
   bottom: 0;
-  left: 30%;
 }
 
 .firemario {
   background-image: url("../images/firemario.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position-y: 100%;
-  background-position-x: 50%;
-  height: 80%;
-  width: 60%;
-  position: absolute;
+  background-position: center;
+  height: 100%;
+  width: 100%;
   bottom: 0;
-  left: 30%;
 }
 
 .starmario {
@@ -394,32 +318,27 @@ aside {
 }
 
 .super-to-mario {
-  position: absolute;
   bottom: 0;
   background-image: url('../images/super-to-mario.gif');
 }
 
 .mario-to-super {
-  position: absolute;
   bottom: 0;
   background-image: url('../images/mario-to-super.gif');
 }
 
 .mario-to-fire {
-  position: absolute;
   bottom: 0;
   background-image: url('../images/mario-to-fire.gif');
 
 }
 
 .super-to-fire {
-  position: absolute;
   bottom: 0;
   background-image: url('../images/super-to-fire.gif');
 }
 
 .fire-to-super {
-  position: absolute;
   bottom: 0;
   background-image: url('../images/fire-to-super.gif');
 }
@@ -434,12 +353,30 @@ aside {
   background-image: url("../images/question_block.gif");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
 
 div.row {
-  height: 20vh;
-  padding: 4% 5%;
+  height: 30%;
+  min-height: 70px;
+  padding: 10px 40px;
+}
+
+div.row.header {
+  height: 10%;
+  min-height: unset;
+}
+
+div.container.row {
+  max-width: unset;
+  height: 50%;
+  width: 100vw;
+}
+
+@media
+only screen and (orientation: landscape) {
+  /* Styles */
 }
 
 .hidden {
@@ -455,6 +392,7 @@ div.row {
   background-image: url("../images/star.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .mushroom {
@@ -466,6 +404,7 @@ div.row {
   background-image: url("../images/mushroom.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .life {
@@ -477,6 +416,7 @@ div.row {
   background-image: url("../images/life.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .koopa {
@@ -488,6 +428,7 @@ div.row {
   background-image: url("../images/koopa.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .goomba {
@@ -499,6 +440,7 @@ div.row {
   background-image: url("../images/goomba.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .fire {
@@ -510,6 +452,7 @@ div.row {
   background-image: url("../images/fire.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .coin {
@@ -521,6 +464,7 @@ div.row {
   background-image: url("../images/coin.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .bones {
@@ -532,6 +476,7 @@ div.row {
   background-image: url("../images/bones.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .bowser {
@@ -543,4 +488,5 @@ div.row {
   background-image: url("../images/bowser.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
