@@ -49,25 +49,33 @@
   src: url("../fonts/538fonts_super-mario-286/Super\ Mario\ 286.ttf")
 }
 
-body {
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+body.container-fluid {
   height: 100vh;
   font-family: smbFont;
+  margin-left: auto;
+  margin-right: auto;
   color: white;
   background-image: url("../images/background.png");
   background-size: cover;
-  overflow: hidden;
 }
 
 header {
   background-image: url("../images/brick_background.png");
   background-size: cover;
-  background-position: bottom;
+  background-position: bottom right;
 }
 
 footer {
   background-image: url("../images/brick_background.png");
   background-size: cover;
-  background-position: top;
+  background-position: top right;
 }
 
 
@@ -79,9 +87,11 @@ main {
 
 header.game {
   position: absolute;
-  height: 50vh;
+  height: 70vh;
   width: 100vw;
   bottom: 100vh;
+  left: 0;
+  right: 0;
   animation-name: open-header;
   animation-duration: .65s;
   animation-timing-function: ease-out;
@@ -90,6 +100,8 @@ header.game {
 header.home {
   position: absolute;
   height: 70vh;
+  left: 0;
+  right: 0;
   width: 100vw;
   bottom: 50vh;
 }
@@ -97,6 +109,8 @@ header.home {
 footer.home {
   position: absolute;
   top: 50vh;
+  left: 0;
+  right: 0;
   height: 70vh;
   width: 100vw;
 }
@@ -105,7 +119,7 @@ footer.game {
   position: fixed;
   top: 91vh;
   left: 0;
-  height: 50vw;
+  height: 70vw;
   width: 100vw;
   animation-name: open-footer;
   animation-duration: .65s;
@@ -140,11 +154,7 @@ div.title {
   padding: 0;
   width: 80vw;
   margin:0;
-  display: inline-block;
-}
-
-.container-fluid {
-  padding: 0;
+  display: block;
 }
 
 .scoretable {
@@ -181,7 +191,7 @@ div.scoretable > div.row > div.col-12 {
 
 .block {
   position: relative;
-  display: inline-block;
+  display: block;
   background-image: url('../images/brick.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -200,7 +210,7 @@ div.scoretable > div.row > div.col-12 {
 
 .modal {
   position: absolute;
-  display: inline-block;
+  display: block;
   background-size: contain;
   background-repeat: no-repeat;
   margin: 21.5vh 10vw 21.5vh 10vw;
@@ -241,10 +251,11 @@ div.scoretable > div.row > div.col-12 {
 }
 
 .col-2-5 {
-    position: relative;
-    width: 20vw;
-    height: 100%;
-    margin: 0;
+  flex: 0 0 20.8333333333%;
+  max-width: 20.8333333333%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .col-9-5 {
@@ -256,7 +267,7 @@ div.scoretable > div.row > div.col-12 {
 }
 
 aside.row {
-  height: 40%;
+  height: 35%;
   padding-bottom: 9vh;
 }
 
@@ -370,13 +381,8 @@ div.row.header {
 
 div.container.row {
   max-width: unset;
-  height: 50%;
-  width: 100vw;
-}
-
-@media
-only screen and (orientation: landscape) {
-  /* Styles */
+  height: 55%;
+  width: 100%;
 }
 
 .hidden {
