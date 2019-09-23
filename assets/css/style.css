@@ -67,7 +67,7 @@ div.info div.row {
 }
 
 div.info div.row * {
-  font-size: 2.5vw;
+  font-size: calc(30px + 1vw);
 }
 
 .display-block {
