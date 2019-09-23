@@ -2,7 +2,7 @@ var percentAccuracy = 0;
 
 
 $('div.bot').prepend($('<button>', { id: 'play' }));
-$('#play').on('click', startGame);
+$('#play').on('click touchstart', startGame);
 
 function startGame() {
   $('#play').remove();

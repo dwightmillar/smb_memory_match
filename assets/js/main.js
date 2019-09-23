@@ -31,7 +31,7 @@ var score = 0;
 
 class Card {
   constructor(type) {
-    this.div = $("<div>", { class: "col-3", click: this.flipCard });
+    this.div = $("<div>", { class: "col-3" }).on('click touchstart', this.flipCard);
     this.cardBack = $("<div>", { class: "back"});
     this.cardFace = $("<div>", { class: type + " hidden"});
     this.canClick = true;
@@ -157,6 +157,8 @@ function updatePointCounter(addPoints) {
 
     score = Number(score);
 
+    $('header div.col-2').text(points);
+
     $('#points').text(points);
     $('#accuracy').text(Math.round(percentAccuracy * 100) + '%');
     $('#score').text(score);
@@ -228,8 +230,8 @@ function displayInstructions() {
 }
 
 function closeInstructions() {
-  $('header').css('display', 'flex');
-  $('.home').css('display', 'block');
+  $('header').css('display','flex');
+  $('.home').show();
   $('.info').hide();
 }
 
@@ -274,11 +276,11 @@ function shrink() {
 
 function resetGame() {
   $('div.container-fluid div.row').remove();
-  $('header').css('display', 'block');
+  $('header').css('display', 'flex');
   $('.home').css('display', 'block');
-  $('.endgame').css('display', 'none');
+  $('.endgame').hide();
 
-  $('header > div')[0].text('0');
+  $('header div.col-2').text('0');
 
   health = 2;
   canClick = true;
