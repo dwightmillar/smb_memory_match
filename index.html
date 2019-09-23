@@ -3,37 +3,44 @@
   <head>
     <title>Memory Match</title>
   </head>
-  <body class="container-fluid">
-    <div class="header row">
-      <div class="col-2 points">
-        <div class="digit"></div>
-        <div class="digit"></div>
-        <div class="digit"></div>
-        <div class="digit"></div>
+  <body>
+
+    <header>0</header>
+    <div class="title">
+      <div class="container-fluid"></div>
+
+      <div id="bot" class="brick bot">
+        <div id="mario" class="mario"></div>
+      </div>
+      <div id="top" class="brick top">
+        <div>Super Mario Memory Match</div>
       </div>
     </div>
-    <div class="container row"></div>
-    <aside class="row">
-      <div id="player" class="mario"></div>
-    </aside>
-    <header class="home">
-      <div class="title"></div>
-    </header>
-    <footer class="home"></footer>
 
+
+
+
+  </body>
+
+  <div id="audiofiles">
     <audio id='theme' class="music-clip" src="assets/sounds/02 Title Theme.mp3" type="audio/mp3"></audio>
     <audio id='death' class="music-clip" src="assets/sounds/smb_mariodie.wav" type="audio/wav"></audio>
     <audio id='grow' class="sound-effect" src="assets/sounds/grow.wav" type="audio/wav"></audio>
     <audio id='shrink' class="sound-effect" src="assets/sounds/shrink.wav" type="audio/wav"></audio>
     <audio id='oneup' class="sound-effect" src="assets/sounds/smb3_1-up.wav" type="audio/wav"></audio>
     <audio id='score' class="sound-effect" src="assets/sounds/smb3_coin.wav" type="audio/wav"></audio>
-    <audio id='victory' class="music-clip" src="assets/sounds/8d82b5_Super_Mario_Bros_World_Clear_Sound_Effect.mp3" type="audio/mp3"></audio>
-    <audio id='invincible' class="music-clip" src="assets/sounds/super-mario-bros-nes-music-star-theme-cut-mp3.mp3" type="audio/mp3"></audio>
+    <audio id='victory' class="music-clip" src="assets/sounds/8d82b5_Super_Mario_Bros_World_Clear_Sound_Effect.mp3"
+      type="audio/mp3"></audio>
+    <audio id='invincible' class="music-clip" src="assets/sounds/super-mario-bros-nes-music-star-theme-cut-mp3.mp3"
+      type="audio/mp3"></audio>
     <audio id='click' class="sound-effect" src="assets/sounds/smb3_sound_effects_bump.wav" type="audio/wav"></audio>
-  </body>
+  </div>
 
   <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/cards.css">
+  <link rel="stylesheet" href="./assets/css/mario.css">
+
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/sounds.js"></script>
   <script src="assets/js/main.js"></script>

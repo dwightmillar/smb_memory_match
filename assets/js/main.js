@@ -1,4 +1,4 @@
-var cardContainer = $("div.container");
+var cardContainer = $("div.container-fluid");
 var health = 2;
 var lives = 1;
 var powerups = [];
@@ -13,7 +13,6 @@ var cardDeck =
   'fire', 'fire',
   'goomba', 'goomba',
   'koopa', 'koopa',
-  'life', 'life',
   'bones', 'bones',
   'bowser', 'bowser',
   'coin', 'coin'];
@@ -33,7 +32,7 @@ var score = 0;
 
 class Card {
   constructor(type) {
-    this.div = $("<div>", { class: "col-2", click: this.flipCard });
+    this.div = $("<div>", { class: "col-3", click: this.flipCard });
     this.cardBack = $("<div>", { class: "back"});
     this.cardFace = $("<div>", { class: type + " hidden"});
     this.canClick = true;
@@ -125,12 +124,6 @@ class Card {
             shrink();
             break;
 
-          case 'life':
-            updatePointCounter(100);
-            ++lives;
-            sounds.soundEffect('oneup');
-            break;
-
           case 'bones':
             updatePointCounter(100);
             shrink();
@@ -158,37 +151,14 @@ function updatePointCounter(addPoints) {
   calculateAccuracy();
 
   if(addPoints) {
-    points = (points + addPoints) + '';
-    score = Math.round(points * percentAccuracy) + '';
+    points = (points + addPoints);
+    score = Math.round(points * percentAccuracy);
 
-    digits = points.split('');
     points = Number(points);
 
-    scoreDigits = score.split('');
     score = Number(score);
 
-    accuracyDigits = (percentAccuracy + '').split('');
-
-    for (let digitIndex = 0; digitIndex < 4; digitIndex++) {
-      let currentDigit = digits[digits.length - 1 - digitIndex];
-      $('.points > .digit')[3 - digitIndex].style.backgroundImage = `url("./assets/images/${currentDigit}.png")`;
-    }
-  }
-
-
-  if (!addPoints) {
-    for (let digitIndex = 0; digitIndex < 4; digitIndex++) {
-      let currentDigit = digits[digits.length - 1 - digitIndex];
-      $('.col-4 > .digit#points')[3 - digitIndex].style.backgroundImage = `url("./assets/images/${currentDigit}.png")`;
-    }
-    for (let digitIndex = 0; digitIndex < 3; digitIndex++) {
-      let currentDigit = accuracyDigits[accuracyDigits.length - 1 - digitIndex];
-      $('.col-4 > .digit#accuracy')[2 - digitIndex].style.backgroundImage = `url("./assets/images/${currentDigit}.png")`;
-    }
-    for (let digitIndex = 0; digitIndex < 4; digitIndex++) {
-      let currentDigit = scoreDigits[scoreDigits.length - 1 - digitIndex];
-      $('.col-4 > .digit#score')[3 - digitIndex].style.backgroundImage = `url("./assets/images/${currentDigit}.png")`;
-    }
+    $('header').text(points)
   }
 }
 
@@ -356,7 +326,6 @@ function resetGame() {
       'fire', 'fire',
       'goomba', 'goomba',
       'koopa', 'koopa',
-      'life', 'life',
       'bones', 'bones',
       'bowser', 'bowser',
       'coin', 'coin'];
@@ -369,10 +338,10 @@ function setGame() {
   $('#theme')[0].play()
     .catch((error) => console.log(error.message));
 
-  for (var rowIndex = 0; rowIndex < 3; rowIndex++) {
+  for (var rowIndex = 0; rowIndex < 4; rowIndex++) {
     let cardRow = $("<div>", { class: "row" });
     cardContainer.append(cardRow);
-    for (var cardIndex = 0; cardIndex < 6; cardIndex++) {
+    for (var cardIndex = 0; cardIndex < 4; cardIndex++) {
       randomCardIndex = Math.floor(Math.random() * cardDeck.length);
       randomCard = new Card((cardDeck.splice(randomCardIndex, 1))[0]);
       $(cardRow).append(randomCard);

@@ -1,0 +1,9 @@
+.mario {
+  background-image: url('../images/mario.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
