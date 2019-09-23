@@ -127,7 +127,7 @@ div.info div.row.tenpercentHeight {
   margin: 0 auto;
   padding: 0;
   width: 15.25vh;
-  min-height: 70px;
+  min-height: 50px;
 }
 
 .bot > div {
