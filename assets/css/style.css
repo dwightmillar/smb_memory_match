@@ -52,6 +52,7 @@ div.container-fluid {
 
 div.row {
   height: 25%;
+  min-height: 80px;
   padding: 10px 0;
 }
 
@@ -62,16 +63,24 @@ div.endgame div.row {
 }
 
 div.info div.row {
-  height: 12%;
+  height: 20%;
   padding: 0 30px;
 }
 
 div.info div.row * {
-  font-size: calc(30px + 1vw);
+  font-size: calc(25px + 1vh);
+}
+
+div.info {
+  overflow: scroll;
 }
 
 .display-block {
   display: block;
+}
+
+div.info div.row.tenpercentHeight {
+  height: 10%;
 }
 
 .home {
@@ -118,6 +127,7 @@ div.info div.row * {
   margin: 0 auto;
   padding: 0;
   width: 15.25vh;
+  min-height: 70px;
 }
 
 .bot > div {

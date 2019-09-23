@@ -157,9 +157,6 @@ function updatePointCounter(addPoints) {
 
     score = Number(score);
 
-    console.log($('header > div')[0]);
-
-    $('header').first().text(points);
     $('#points').text(points);
     $('#accuracy').text(Math.round(percentAccuracy * 100) + '%');
     $('#score').text(score);
@@ -219,21 +216,21 @@ function displayModal(result) {
     $('#WinOrLose').text('GAME OVER');
   }
 
-  $('header').css('display', 'none');
-  $('.home').css('display', 'none');
+  $('header').hide();
+  $('.home').hide();
   $('.endgame').css('display','block');
 }
 
 function displayInstructions() {
-  $('header').css('display', 'none');
-  $('.home').css('display', 'none');
+  $('header').hide();
+  $('.home').hide();
   $('.info').css('display', 'block');
 }
 
 function closeInstructions() {
   $('header').css('display', 'flex');
   $('.home').css('display', 'block');
-  $('.info').css('display', 'none');
+  $('.info').hide();
 }
 
 
