@@ -4,6 +4,10 @@
   src: url('../fonts/538fonts_super-mario-286/Super\ Mario\ 286.ttf');
 }
 
+#player {
+  z-index: -1;
+}
+
 * {
   font-family: smbFont;
   font-size: 1.5rem;
