@@ -6,7 +6,7 @@
 
 * {
   font-family: smbFont;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: white;
   -webkit-text-stroke: 1px black;
 }
@@ -52,7 +52,7 @@ div.container-fluid {
 
 div.row {
   height: 25%;
-  min-height: 80px;
+  min-height: 70px;
   padding: 10px 0;
 }
 
@@ -68,11 +68,12 @@ div.info div.row {
 }
 
 div.info div.row * {
-  font-size: calc(25px + 1vh);
+  font-size: calc(25px + 1.2vh);
 }
 
 div.info {
-  overflow: scroll;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .display-block {
@@ -127,7 +128,6 @@ div.info div.row.tenpercentHeight {
   margin: 0 auto;
   padding: 0;
   width: 15.25vh;
-  min-height: 50px;
 }
 
 .bot > div {
