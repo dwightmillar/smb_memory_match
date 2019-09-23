@@ -172,8 +172,8 @@ div.info div.row.tenpercentHeight {
 }
 
 div.col-1 div.button {
-  position: absolute;
-  left: calc(20px + 1vw);
+  position: fixed;
+  right: calc(20px + 1vw);
 }
 
 div.endgame{
