@@ -3,7 +3,96 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.minimario {
+  background-image: url('../images/minimario.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.firemario {
+  background-image: url('../images/firemario.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.super-to-mario {
+  background-image: url('../images/super-to-mario.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.mario-to-super {
+  background-image: url('../images/mario-to-super.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.mario-to-fire {
+  background-image: url('../images/mario-to-fire.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.fire-to-super {
+  background-image: url('../images/fire-to-super.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.super-to-fire {
+  background-image: url('../images/super-to-fire.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.starmario {
+  background-image: url('../images/invinciblesupermario.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.starfiremario {
+  background-image: url('../images/invinciblefiremario.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.starminimario {
+  background-image: url('../images/invinciblemario.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 100%;
   width: 100%;
 }
