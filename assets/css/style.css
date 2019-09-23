@@ -139,12 +139,6 @@ div.info div.row.tenpercentHeight {
  }
 }
 
-@media screen and (orientation: landscape) and (min-width: 768px) {
- .game {
-   top: 88% !important;
- }
-}
-
 
 
 .col-3 {
