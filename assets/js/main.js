@@ -26,7 +26,6 @@ var tries = 0;
 var percentAccuracy = 0;
 var points = 0;
 var matches = 0;
-var digits = 0;
 var score = 0;
 
 
@@ -39,6 +38,8 @@ class Card {
 
     this.div.append(this.cardBack);
     this.div.append(this.cardFace);
+
+    this.flipCard = this.flipCard.bind(this);
 
     return (
       this.div
@@ -128,7 +129,7 @@ class Card {
             break;
 
           case 'bowser':
-            updatePointCounter(100);
+            updatePointCounter();
             endgame();
             break;
 
@@ -156,7 +157,9 @@ function updatePointCounter(addPoints) {
 
     score = Number(score);
 
-    $('header > div')[0].text(points);
+    console.log($('header > div')[0]);
+
+    $('header').first().text(points);
     $('#points').text(points);
     $('#accuracy').text(Math.round(percentAccuracy * 100) + '%');
     $('#score').text(score);
@@ -211,6 +214,7 @@ function endgame() {
 function displayModal(result) {
   if(result === 'win'){
     $('#WinOrLose').text('Victory!');
+    updatePointCounter(100);
   } else {
     $('#WinOrLose').text('GAME OVER');
   }
@@ -218,7 +222,6 @@ function displayModal(result) {
   $('header').css('display', 'none');
   $('.home').css('display', 'none');
   $('.endgame').css('display','block');
-  updatePointCounter();
 }
 
 function displayInstructions() {
