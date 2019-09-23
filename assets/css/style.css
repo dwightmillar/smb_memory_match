@@ -23,11 +23,21 @@ body {
 
 header {
   position: absolute;
+  width: 100vw;
   padding-left: 2vw;
 }
 
-button.play {
-  background-color: lime;
+button {
+  background-image: url('../images/play.png');
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+  outline: none;
+  border: none;
+  height: 72px;
+  width: 162px;
+  border-radius: 10px;
 }
 
 div.container-fluid {
@@ -45,12 +55,39 @@ div.row {
   padding: 10px 0;
 }
 
-.title {
+div.endgame div.row {
+  height: 15%;
+  font-size: 70%;
+  text-align: center;
+}
+
+div.info div.row {
+  height: 12%;
+  font-size: 70%;
+}
+
+.display-block {
+  display: block;
+}
+
+.home {
   position: relative;
   height: 100vh;
   padding: 0;
   margin: 0;
   text-align: center;
+}
+
+.title {
+  height:90%;
+  width:90%;
+  margin-left: 50px;
+  margin-right: 50px;
+
+  background-image: url('../images/supermario.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .brick {
@@ -84,4 +121,35 @@ div.row {
   height: 23vh;
   position: absolute;
   top: -23vh;
+}
+
+.button {
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button:hover {
+  color: gainsboro;
+}
+
+div.endgame{
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+div.info {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: contain;
 }

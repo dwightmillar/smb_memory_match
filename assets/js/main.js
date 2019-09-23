@@ -43,8 +43,6 @@ class Card {
     return (
       this.div
     )
-
-    this.flipCard = this.flipCard.bind(this);
   }
 
   flipCard() {
@@ -158,7 +156,10 @@ function updatePointCounter(addPoints) {
 
     score = Number(score);
 
-    $('header').text(points)
+    $('header > div')[0].text(points);
+    $('#points').text(points);
+    $('#accuracy').text(Math.round(percentAccuracy * 100) + '%');
+    $('#score').text(score);
   }
 }
 
@@ -199,70 +200,37 @@ function endgame() {
   canClick = false;
 
   if (lives === 2 || powerups.length > 0) {
-    createModal('win');
+    displayModal('win');
     sounds.victoryMusic();
   } else {
-    createModal('lose');
+    displayModal('lose');
     sounds.deathMusic();
   }
 }
 
-function createModal(type) {
+function displayModal(result) {
+  if(result === 'win'){
+    $('#WinOrLose').text('Victory!');
+  } else {
+    $('#WinOrLose').text('GAME OVER');
+  }
 
-  const scoreTable = $('<div>', { class: 'container-fluid scoretable'});
-
-  const labelsRow = $('<div>', { class: 'row' });
-
-  const pointsLabel = $('<div>', { class: 'col-4', css: {"background-image": "url(./assets/images/points.png)"} });
-  const accuracyLabel = $('<div>', { class: 'col-4', css: { "background-image": "url(./assets/images/accuracy.png)"} });
-  const scoreLabel = $('<div>', { class: 'col-4', css: { "background-image": "url(./assets/images/score.png)"} });
-  labelsRow.append(pointsLabel);
-  labelsRow.append(accuracyLabel);
-  labelsRow.append(scoreLabel);
-
-  const numbersRow = $('<div>', { class: 'row' });
-
-  const numberOfPoints = $('<div>', { class: 'col-4', css: { "padding-left": "7%" } });
-    numberOfPoints.append($('<div>', { class: 'digit', id: 'points' }));
-    numberOfPoints.append($('<div>', { class: 'digit', id: 'points' }));
-    numberOfPoints.append($('<div>', { class: 'digit', id: 'points' }));
-    numberOfPoints.append($('<div>', { class: 'digit', id: 'points' }));
-
-
-  const accuracyScore = $('<div>', { class: 'col-4', css: { "padding-left": "7%" } });
-    accuracyScore.append($('<div>', { class: 'digit', id: 'accuracy' }));
-    accuracyScore.append($('<div>', { class: 'digit', id: 'accuracy' }));
-    accuracyScore.append($('<div>', { class: 'digit', id: 'accuracy' }));
-    accuracyScore.append($('<div>', { class: 'digit', css: { "background-image": "url(./assets/images/percent-sign.png)" }}));
-
-
-  const scoreColumn = $('<div>', { class: 'col-4', css: { "padding-left": "7%" } });
-    scoreColumn.append($('<div>', { class: 'digit', id: 'score' }));
-    scoreColumn.append($('<div>', { class: 'digit', id: 'score' }));
-    scoreColumn.append($('<div>', { class: 'digit', id: 'score' }));
-    scoreColumn.append($('<div>', { class: 'digit', id: 'score' }));
-
-  numbersRow.append(numberOfPoints);
-  numbersRow.append(accuracyScore);
-  numbersRow.append(scoreColumn);
-
-  const buttonRow = $('<div>', { class: 'row' })
-
-  const buttonDiv = $('<div>', { class: 'col-12' });
-  const playButton = $('<button>', { id: 'play', class: 'play', text: 'PLAY AGAIN?' })
-  buttonRow.append(buttonDiv).append(playButton);
-
-  scoreTable.append(labelsRow);
-  scoreTable.append(numbersRow);
-  scoreTable.append(buttonRow);
-
-  $('body').append($('<div>', { class: type + ' modal' }))
-  $('div.modal').append($(scoreTable));
-  $('div.modal').append();
-  $('#play').on('click', resetGame);
-
+  $('header').css('display', 'none');
+  $('.home').css('display', 'none');
+  $('.endgame').css('display','block');
   updatePointCounter();
+}
 
+function displayInstructions() {
+  $('header').css('display', 'none');
+  $('.home').css('display', 'none');
+  $('.info').css('display', 'block');
+}
+
+function closeInstructions() {
+  $('header').css('display', 'flex');
+  $('.home').css('display', 'block');
+  $('.info').css('display', 'none');
 }
 
 
@@ -280,7 +248,7 @@ function shrink() {
           $('#player')[0].className = 'mario';
         } else if (lives === 0) {
           canClick = false;
-          createModal('lose');
+          displayModal('lose');
         }
       }
       break;
@@ -305,12 +273,12 @@ function shrink() {
 }
 
 function resetGame() {
-  $('div.row').remove();
-  $('.modal').remove();
+  $('div.container-fluid div.row').remove();
+  $('header').css('display', 'block');
+  $('.home').css('display', 'block');
+  $('.endgame').css('display', 'none');
 
-  for (let digitIndex = 0; digitIndex < 4; digitIndex++) {
-    $('.points > .digit')[3 - digitIndex].style.backgroundImage = `url("./assets/images/0.png")`;
-  }
+  $('header > div')[0].text('0');
 
   health = 2;
   canClick = true;

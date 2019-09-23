@@ -4,21 +4,125 @@
     <title>Memory Match</title>
   </head>
   <body>
+    <header class="row">
+      <div class="col-2">0</div>
+      <div class="col-9"></div>
+      <div class="col-1">
+        <div class="button" onclick="displayInstructions();">?</div>
+      </div>
+    </header>
+    <div class="endgame">
 
-    <header>0</header>
-    <div class="title">
+      <div class="row">
+        <div class="col-5"></div>
+        <div id="WinOrLose" class="col-2"></div>
+        <div class="col-5"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-1"></div>
+        Points:&nbsp;<div id="points"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-1"></div>
+        Accuracy:&nbsp;<div id="accuracy"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-1"></div>
+        Score:&nbsp;<div id="score"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="button" onclick="resetGame();">CLICK TO PLAY AGAIN</div>
+        </div>
+        <div class="col-4"></div>
+      </div>
+
+    </div>
+
+    <div class="info" onclick="closeInstructions();">
+
+      <div class="row">
+        <div class="col-4"></div>
+          <div class="col-4">INSTRUCTIONS</div>
+        <div class="col-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-1"></div>
+        Matching these will damage Mario
+        <div class="col-1"></div>
+        <div class="col-1">
+          <div class="goomba"></div>
+        </div>
+        <div class="col-1">
+          <div class="koopa"></div>
+        </div>
+        <div class="col-1">
+          <div class="bones"></div>
+        </div>
+        <div class="col-7"></div>
+      </div>
+
+      <hr/>
+
+      <div class="row">
+        <div class="col-1"></div>
+        Match these to heal Mario
+        <div class="col-1"></div>
+        <div class="col-1">
+          <div class="mushroom"></div>
+        </div>
+        <div class="col-1">
+          <div class="fire"></div>
+        </div>
+        <div class="col-7"></div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col-1"></div>
+        Matching Bowser will fatally damage Mario and end the game
+        <div class="col-1"></div>
+        <div class="col-2">
+          <div class="bowser"></div>
+        </div>
+        <div class="col-7"></div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col-1"></div>
+        Matching the star will make Mario invincible for 5 seconds
+        <div class="col-1"></div>
+        <div class="col-2">
+          <div class="star"></div>
+        </div>
+        <div class="col-7"></div>
+
+      </div>
+
+      <div class="display-block text-center">Click anywhere to return</div>
+
+    </div>
+
+    <div class="home">
+
       <div class="container-fluid"></div>
-
       <div id="bot" class="brick bot">
         <div id="player" class="mario"></div>
       </div>
       <div id="top" class="brick top">
-        <div>Super Mario Memory Match</div>
+        <div class="title"></div>
       </div>
+
     </div>
-
-
-
 
   </body>
 
