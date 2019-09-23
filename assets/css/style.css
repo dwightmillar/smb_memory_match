@@ -173,6 +173,7 @@ div.info div.row.tenpercentHeight {
 
 div.col-1 div.button {
   position: fixed;
+  top: 1vh;
   right: calc(20px + 1vw);
 }
 
