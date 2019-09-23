@@ -171,6 +171,11 @@ div.info div.row.tenpercentHeight {
   color: gainsboro;
 }
 
+div.col-1 div.button {
+  position: absolute;
+  left: calc(20px + 1vw);
+}
+
 div.endgame{
   height: 100%;
   width: 100%;
