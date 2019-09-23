@@ -133,9 +133,15 @@ div.info div.row.tenpercentHeight {
   background-position: top;
 }
 
-@media screen and (orientation: landscape) and (max-width: 670px) {
+@media screen and (orientation: landscape) and (max-width: 768px) {
  .game {
    top: 100% !important;
+ }
+}
+
+@media screen and (orientation: landscape) and (min-width: 769px) {
+ .game {
+   top: 88% !important;
  }
 }
 
