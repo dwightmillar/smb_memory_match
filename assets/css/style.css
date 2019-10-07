@@ -86,6 +86,11 @@ div.info {
   overflow-x: hidden;
 }
 
+div.info *{
+  text-align: center;
+  background-position: center;
+}
+
 .display-block {
   display: block;
 }
