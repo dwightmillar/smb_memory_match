@@ -73,12 +73,12 @@ div.endgame div.row {
 }
 
 div.info div.row {
-  height: 15%;
+  height: 10%;
   padding: 0 30px;
 }
 
 div.info div.row * {
-  font-size: calc(20px + 1.5vh);
+  font-size: calc(10px + 1.5vh);
 }
 
 div.info {
@@ -180,6 +180,7 @@ div.col-1 div.button {
 
 div.row div.col-6.row {
   height: 100%;
+  padding: 0;
 }
 
 div.endgame{
