@@ -10,7 +10,7 @@
 
 * {
   font-family: smbFont;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
   -webkit-text-stroke: 1px black;
 }
@@ -72,7 +72,6 @@ div.home div.row {
 
 div.endgame div.row {
   height: 15%;
-  font-size: 70%;
   text-align: center;
 }
 
