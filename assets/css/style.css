@@ -31,6 +31,10 @@ header {
   padding-left: 2vw;
 }
 
+header.row {
+  display: none;
+}
+
 button {
   background-image: url('../images/play.png');
   background-color: transparent;
@@ -78,7 +82,7 @@ div.info div.row {
 }
 
 div.info div.row * {
-  font-size: calc(10px + 1.5vh);
+  font-size: calc(10px + 0.2rem);
 }
 
 div.info {
