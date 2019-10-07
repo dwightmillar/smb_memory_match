@@ -16,10 +16,11 @@ function startGame() {
   function frame() {
     if (bottomBricksPos === 88) {
       clearInterval(animation);
+      $('.home').css('display','none');
       $('#bot').addClass('game');
     } else {
       topBricksPos -= 1.4;
-      ++bottomBricksPos;
+      bottomBricksPos += 1;
       topBricks.style.top = topBricksPos + '%';
       bottomBricks.style.top = bottomBricksPos + '%';
     }
