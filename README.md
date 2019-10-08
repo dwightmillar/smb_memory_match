@@ -1,5 +1,5 @@
 # Super Mario Bros. Memory Match
-[Demo](dev.dwightmillar.com/memory_match)
+[Demo](http://dev.dwightmillar.com/memory_match)
 
 ### Features
 - User can flip card
