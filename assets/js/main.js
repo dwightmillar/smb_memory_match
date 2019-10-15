@@ -211,16 +211,18 @@ function endgame() {
 }
 
 function displayModal(result) {
-  if(result === 'win'){
-    $('#WinOrLose').text('Victory!');
-    updatePointCounter(100);
-  } else {
-    $('#WinOrLose').text('GAME OVER');
-  }
+  setTimeout((result) => {
+    if (result === 'win') {
+      $('#WinOrLose').text('Victory!');
+      updatePointCounter(100);
+    } else {
+      $('#WinOrLose').text('GAME OVER');
+    }
 
-  $('header').hide();
-  $('.home').hide();
-  $('.endgame').css('display','block');
+    $('header').hide();
+    $('.home').hide();
+    $('.endgame').css('display', 'block');
+  },1000);
 }
 
 function displayInstructions() {
@@ -288,6 +290,8 @@ function resetGame() {
   percentAccuracy = 0;
   points = 0;
   matches = 0;
+  lives = 1;
+  health = 2;
   $('#player')[0].className = 'mario';
 
   cardDeck =
